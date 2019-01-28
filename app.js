@@ -6,6 +6,21 @@ const app = express();
 // Middleware
 const logger = require('./middleware/logger');
 
+// Routes
+const clientsRoutes = require('./routes/clients');
+const airportsRoutes = require('./routes/airports');
+const crewRoutes = require('./routes/crew');
+const flightsRoutes = require('./routes/flights');
+const flightTicketsRoutes = require('./routes/flightTickets');
+const itineraryRoutes = require('./routes/itinerary');
+const maintenanceRoutes = require('./routes/maintenance');
+const manufacturersRoutes = require('./routes/manufacturers');
+const passengersRoutes = require('./routes/passengers');
+const planeModelsRoutes = require('./routes/planeModels');
+const planesRoutes = require('./routes/planes');
+const planeTicketsRoutes = require('./routes/planeTickets');
+const providersRoutes = require('./routes/providers');
+
 // Models
 const Airport = require('./models/Airport');
 const Client = require('./models/Client');
@@ -33,17 +48,17 @@ app.get('/test', (req, res, next) =>{
 
 // Router's
 
-app.use('/airports', airportRoutes);
+app.use('/airports', airportsRoutes);
 app.use('/clients', clientsRoutes);
 app.use('/crew', crewRoutes);
 app.use('/flights', flightsRoutes);
 app.use('/flightTickets', flightTicketsRoutes);
 app.use('/itinerary', itineraryRoutes);
+app.use('/maintenance', maintenanceRoutes);
 app.use('/manufacturers', manufacturersRoutes);
 app.use('/passengers', passengersRoutes);
 app.use('/planes', planesRoutes);
-app.use('/manteinance', manteinanceRoutes);
-app.use('/planeModel', planeModelsRoutes);
+app.use('/planeModels', planeModelsRoutes);
 app.use('/planeTickets', planeTicketsRoutes);
 app.use('/providers', providersRoutes);
 
