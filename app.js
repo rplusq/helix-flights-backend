@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sequelize = require('./util/database'); //Database instance 
+const cors = require('cors');
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors()); // Allows Cross Origin Request
 
 // Middleware
 const logger = require('./middleware/logger');
@@ -36,14 +39,18 @@ const PlaneModel = require('./models/PlaneModel');
 const PlaneTicket = require('./models/PlaneTicket');
 const Provider = require('./models/Provider');
 
-app.use(bodyParser.urlencoded({ extended: false }));
 
 // Request's logger
 app.use(logger);
 
+app.use('/libros', (req, res, next) => {
+  console.log('test libros');
+  next();
+})
+
 // Tests route
 app.get('/test', (req, res, next) =>{
-  res.status(200).send({message: 'succesful test'});
+  res.status(200).json({message: 'succesful test'});
 });
 
 // Router's
@@ -63,7 +70,7 @@ app.use('/planeTickets', planeTicketsRoutes);
 app.use('/providers', providersRoutes);
 
 // Start server in port 5500
-app.listen(5500);
+// app.listen(5500);
 
 // Models get their tables created
 sequelize
