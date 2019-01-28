@@ -31,6 +31,23 @@ app.get('/test', (req, res, next) =>{
   res.status(200).send({message: 'succesful test'});
 });
 
+// Router's
+
+app.use('/airports', airportRoutes);
+app.use('/clients', clientsRoutes);
+app.use('/crew', crewRoutes);
+app.use('/flights', flightsRoutes);
+app.use('/flightTickets', flightTicketsRoutes);
+app.use('/itinerary', itineraryRoutes);
+app.use('/manufacturers', manufacturersRoutes);
+app.use('/passengers', passengersRoutes);
+app.use('/planes', planesRoutes);
+app.use('/manteinance', manteinanceRoutes);
+app.use('/planeModel', planeModelsRoutes);
+app.use('/planeTickets', planeTicketsRoutes);
+app.use('/providers', providersRoutes);
+
+// Start server in port 5500
 app.listen(5500);
 
 // Models get their tables created
