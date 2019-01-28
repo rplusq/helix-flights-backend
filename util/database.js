@@ -6,4 +6,6 @@ const sequelize = new Sequelize('helixflights', 'helixadmin', '123456helix', {
   port: 3306
 });
 
+
 module.exports = sequelize;
+ 

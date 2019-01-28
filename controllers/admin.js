@@ -1,4 +1,4 @@
-const Product = require('../models/product');
+/*const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
@@ -100,3 +100,4 @@ exports.postDeleteProduct = (req, res, next) => {
     })
     .catch(err => console.log(err));
 };
+*/

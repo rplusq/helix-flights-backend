@@ -2,14 +2,21 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const CartItem = sequelize.define('cartItem', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
+const Plane = sequelize.define('plane', {
+
+  licenseplate: 
+  {
+    type: Sequelize.STRING,
     allowNull: false,
     primaryKey: true
   },
-  quantity: Sequelize.INTEGER
+
+  medicalsupplies: { type: Sequelize.INTEGER, allowNull: false },
+  crewnumber: { type: Sequelize.INTEGER, allowNull: false },
+  status: Sequelize.STRING,
+  idmodel: { type: Sequelize.INTEGER, allowNull: false },
+
+
 });
 
-module.exports = CartItem;
+module.exports = Plane;
