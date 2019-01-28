@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const sequelize = require('./util/database'); //Database instance 
 const cors = require('cors');
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+
 app.use(cors()); // Allows Cross Origin Request
 
 // Middleware
@@ -30,11 +32,11 @@ const Client = require('./models/Client');
 const Crew = require('./models/Crew');
 const Flight = require('./models/Flight');
 const FlightTicket = require('./models/FlightTicket');
-const Itinerary = require('./models/Itinerary');
+// const Itinerary = require('./models/Itinerary');
 const Manufacturer = require('./models/Manufacturer');
 const Passenger = require('./models/Passenger');
 const Plane = require('./models/Plane');
-const PlaneMaintenance = require('./models/PlaneMaintenance');
+// const PlaneMaintenance = require('./models/PlaneMaintenance');
 const PlaneModel = require('./models/PlaneModel');
 const PlaneTicket = require('./models/PlaneTicket');
 const Provider = require('./models/Provider');
@@ -42,11 +44,6 @@ const Provider = require('./models/Provider');
 
 // Request's logger
 app.use(logger);
-
-app.use('/libros', (req, res, next) => {
-  console.log('test libros');
-  next();
-})
 
 // Tests route
 app.get('/test', (req, res, next) =>{
@@ -70,16 +67,16 @@ app.use('/planeTickets', planeTicketsRoutes);
 app.use('/providers', providersRoutes);
 
 // Start server in port 5500
-// app.listen(5500);
+app.listen(5500);
 
 // Models get their tables created
-sequelize
-  // .sync({ force: true })
-  .sync()
-  .then(result => {
-    console.log(result);
-    app.listen(5500);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// sequelize
+//   // .sync({ force: true })
+//   .sync()
+//   .then(result => {
+//     console.log(result);
+//     app.listen(5500);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
