@@ -9,7 +9,7 @@ router.get('/', planeModelsController.getAll);
 
 
 //Gets all the planeModels in the database
-router.get('/planeModel',planeModelsController.getPlaneModel);
+router.get('/planeModel',planeModelsController.getPlaneModels);
 
 //Creates a specific planeModel in the database
 router.post('/add-planeModel',planeModelsController.postPlaneModel);

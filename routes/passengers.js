@@ -8,7 +8,7 @@ router.get('/', passengersController.getAll);
 
 
 //Gets all the passengers in the database
-router.get('/passenger',passengersController.getPassenger);
+router.get('/passenger',passengersController.getPassengers);
 
 //Creates a specific passenger in the database
 router.post('/add-passenger',passengersController.postPassenger);

@@ -13,7 +13,7 @@ router.get('/itinerary',itineraryController.getItinerary);
 router.post('/add-itinerary',itineraryController.postItinerary);
 
 //Deletes a specific itinerary from the database
-router.post('/delete-itinerary',itineraryController.postDeleteitinerary);
+router.post('/delete-itinerary',itineraryController.postDeleteItinerary);
 
 router.get('/id/:id', itineraryController.getById);
 
