@@ -70,17 +70,14 @@ app.use('/planeModels', planeModelsRoutes);
 app.use('/planeTickets', planeTicketsRoutes);
 app.use('/providers', providersRoutes);
 
-// Start server in port 5500
-app.listen(5500);
-
 // Models get their tables created
-// sequelize
-//   // .sync({ force: true })
-//   .sync()
-//   .then(result => {
-//     console.log(result);
-//     app.listen(5500);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+sequelize
+  // .sync({ force: true })
+  .sync()
+  .then(result => {
+    console.log(result);
+    app.listen(5500);
+  })
+  .catch(err => {
+    console.log(err);
+  });
