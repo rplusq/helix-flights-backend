@@ -1,8 +1,12 @@
 const Airport = require('../models/Airport');
 
 exports.getAll = async (req, res, next) => {
-    const airports = await Airport.getAll();
-    res.status(200).send({ data: airports });
+    try {
+        const airports = await Airport.findAll();
+        res.send({ data: airports });
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 //NOTE: The application will not be able to modify the airport properties
@@ -13,8 +17,8 @@ exports.postAirport = (req, res, next) => {
     const iatacode = req.body.iatacode;
     const city = req.body.city;
     const country = req.body.country;
-    const landdistance = req.body.landdistance;
-    const takeoffdistance = req.body.takeoffdistance;
+    const landdistance = Number(req.body.landdistance);
+    const takeoffdistance = Number(req.body.takeoffdistance);
 
     Airport.create({ //Method provided by sequelize
 
@@ -28,14 +32,10 @@ exports.postAirport = (req, res, next) => {
 
         console.log(result);
         console.log('Airport Created succesfully');
-
+        res.send(result);
     }).catch(err => {
-
         console.log(err);
     });
-
-    res.sendStatus(200);
-
 }
 
 //This method gets all the Airports from the database
@@ -48,28 +48,44 @@ exports.getAirports = (req, res, next) => {
 
         console.log(err);
     });
-    res.status(200).json(Airport);
+    res.json(Airport);
 }
 
 //This method will delete the airport of the database
 exports.deleteAirport = (req, res, next) => {
-    const iatacode = req.body.iatacode;
+    console.log(req.query, req.params);
+    
+    const iatacode = req.params.iatacode;
 
     Airport.findByPk(iatacode)
-        .then(Airport => {
-            return Airport.destroy();
+        .then(airport => {
+            console.log(airport);
+            
+            return airport.destroy();
         })
         .then(result => {
             console.log('Airport deleted successfully');
+            res.send(result);
         })
         .catch(err => console.log(err));
 
-        res.sendStatus(200);
 };
 
 // This method will get a single airport
 exports.getById = async (req, res, next) => {
     const id = req.query.id;
     const airport = await Airport.findByPk(id);
-    res.status(200).json(airport);
+    res.json(airport);
+}
+
+// Update an airport
+exports.updateAirport = async (req, res, nex) => {
+    try {
+        const airport = await Airport.findByPk(req.body.iatacode);
+        let end = await airport.update(req.body);
+        res.send(end);
+    } catch (error) {
+        console.log(error);
+
+    }
 }

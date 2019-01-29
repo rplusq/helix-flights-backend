@@ -4,7 +4,7 @@ const sequelize = require('./util/database'); //Database instance
 const cors = require('cors');
 const app = express();
 // app.use(bodyParser.urlencoded({ extended: false }));
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.json());       // to support JSON-encoded bodies
 
 app.use(cors()); // Allows Cross Origin Request
 
@@ -60,17 +60,12 @@ Maintenance.belongsToMany(Plane, { through: 'plane-maintenance', foreignKey: 'id
 PlaneTicket.belongsToMany(Flight, { through: 'planeticket-flight', foreignKey: 'idplaneticket' });
 Flight.belongsToMany(PlaneTicket, { through: 'planeticket-flight', foreignKey: 'idflight' })
 
-app.use(async (req, res, next) => {
-  const client = await Client.findByPk(1);
-  console.log(client);
-});
-
 // Request's logger
 app.use(logger);  //Manages every request
 
 // Tests route
-app.get('/test', (req, res, next) =>{
-  res.status(200).json({message: 'succesful test'});
+app.get('/test', (req, res, next) => {
+    res.status(200).json({ message: 'succesful test' });
 });
 
 
@@ -89,30 +84,30 @@ app.use('/planeTickets', planeTicketsRoutes);
 app.use('/providers', providersRoutes);
 
 // Models get their tables created
-// sequelize.sync({force:true})
-// //.sync()
-//   .then(result => {
-    
-  
-//     console.log(result);
-//     app.listen(5500);
-//   }).catch(err => {
-//     console.log(err);
-//   });
+sequelize. //sync({force:true})
+sync()
+    .then(result => {
 
-sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
-.then(function() {
-    return sequelize
-        .sync({
-            force: true
-        });
-})
-.then(function() {
-    return sequelize.query('SET FOREIGN_KEY_CHECKS = 1')
-})
-.then(function() {
-    console.log('Database synchronised.');
-    app.listen(5500);
-}, function(err) {
-    console.log(err);
-});
+
+        console.log(result);
+        app.listen(5500);
+    }).catch(err => {
+        console.log(err);
+    });
+
+// sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
+// .then(function() {
+//     return sequelize
+//         .sync({
+//             force: true
+//         });
+// })
+// .then(function() {
+//     return sequelize.query('SET FOREIGN_KEY_CHECKS = 1')
+// })
+// .then(function() {
+//     console.log('Database synchronised.');
+//     app.listen(5500);
+// }, function(err) {
+//     console.log(err);
+// });

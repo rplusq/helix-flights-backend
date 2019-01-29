@@ -4,17 +4,19 @@ const airportsController = require('../controllers/airports');
 
 const router = express.Router();
 
+//Gets all the airports in the database
 router.get('/', airportsController.getAll);
 
-//Gets all the airports in the database
-router.get('/airports', airportsController.getAirports);
+//Creates a specific airport in the database
+router.post('/add',airportsController.postAirport);
 
-//Creates a specific client in the database
-router.post('/add-airport',airportsController.postAirport);
+//Deletes a specific airport from the database
+router.delete('/delete/:iatacode',airportsController.deleteAirport);
 
-//Deletes a specific client from the database
-router.delete('/delete-airport',airportsController.deleteAirport);
+//Updates a specific airport from the database
 
-router.get('/id/:id', airportsController.getById);
+router.put('/update', airportsController.updateAirport);
+
+router.get('/id', airportsController.getById);
 
 module.exports = router;
