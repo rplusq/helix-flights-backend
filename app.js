@@ -36,28 +36,29 @@ const Itinerary = require('./models/Itinerary');
 const Manufacturer = require('./models/Manufacturer');
 const Passenger = require('./models/Passenger');
 const Plane = require('./models/Plane');
-const PlaneMaintenance = require('./models/Maintenance');
+const Maintenance = require('./models/Maintenance');
 const PlaneModel = require('./models/PlaneModel');
 const PlaneTicket = require('./models/PlaneTicket');
 const Provider = require('./models/Provider');
 
 //Relations
-Provider.hasMany(Plane, { foreignKey: 'planeId', sourceKey: 'licenseplate' });
+Plane.belongsToMany(Provider, { through: 'provider-plane', foreignKey: 'idplane' });
+Provider.belongsToMany(Plane, { through: 'provider-plane', foreignKey: 'idprovider' });
 Provider.hasMany(Provider, { foreignKey: 'providerId', sourceKey: 'id' });
 Crew.belongsToMany(Flight, { through: 'crew-flight', foreignKey: 'crewId' });
 Flight.belongsToMany(Crew, { through: 'crew-flight', foreignKey: 'id' });
-PlaneModel.hasMany(Plane, { foreingKey: 'idmodel', sourceKey: 'id' });
-Manufacturer.hasMany(PlaneModel, { foreingKey: 'idmanufacturer', sourceKey: 'id' });
-FlightTicket.hasMany(PlaneTicket, { foreingKey: 'idflightticket', sourceKey: 'id' });
-Passenger.hasMany(PlaneTicket, { foreingKey: 'idpassenger', sourceKey: 'id' });
-Plane.hasMany(Flights, { foreingKey: 'plane', sourceKey: 'licenseplate' });
-Itinerary.hasMany(Flights, { foreingKey: 'iditinerary', sourceKey: 'id' });
-Airport.hasOne(Itinerary, { foreingKey: 'iatadeparture', sourceKey: 'iatacode' });
-Airport.hasOne(Itinerary, { foreingKey: 'iataarrival', sourceKey: 'iatacode' });
-Maintenance.hasMany(Plane, { foreignKey: 'planeId', sourceKey: 'licenseplate' });
-Maintenance.hasMany(Maintenance, { foreignKey: 'maintenanceId', sourceKey: 'id' });
-PlaneTicket.belongsToMany(Flight, { through: 'planeticket-flight', foreignKey: 'id' });
-Flight.belongsToMany(Crew, { through: 'planeticket-flight', foreignKey: 'id' });
+PlaneModel.hasMany(Plane, { foreignKey: 'idmodel', sourceKey: 'id' });
+Manufacturer.hasMany(PlaneModel, { foreignKey: 'idmanufacturer', sourceKey: 'id' });
+FlightTicket.hasMany(PlaneTicket, { foreignKey: 'idflightticket', sourceKey: 'id' });
+Passenger.hasMany(PlaneTicket, { foreignKey: 'idpassenger', sourceKey: 'id' });
+Plane.hasMany(Flight, { foreignKey: 'plane', sourceKey: 'licenseplate' });
+Itinerary.hasMany(Flight, { foreignKey: 'iditinerary', sourceKey: 'id' });
+Airport.hasOne(Itinerary, { foreignKey: 'iatadeparture', sourceKey: 'iatacode' });
+Airport.hasOne(Itinerary, { foreignKey: 'iataarrival', sourceKey: 'iatacode' });
+Plane.belongsToMany(Maintenance, { through: 'plane-maintenance', foreignKey: 'idplane' })
+Maintenance.belongsToMany(Plane, { through: 'plane-maintenance', foreignKey: 'idmaintenance' })
+PlaneTicket.belongsToMany(Flight, { through: 'planeticket-flight', foreignKey: 'idplaneticket' });
+Flight.belongsToMany(PlaneTicket, { through: 'planeticket-flight', foreignKey: 'idflight' })
 
 app.use(async (req, res, next) => {
   const client = await Client.findByPk(1);
@@ -88,13 +89,30 @@ app.use('/planeTickets', planeTicketsRoutes);
 app.use('/providers', providersRoutes);
 
 // Models get their tables created
-sequelize.sync({force:true})
-//.sync()
-  .then(result => {
+// sequelize.sync({force:true})
+// //.sync()
+//   .then(result => {
     
   
-    console.log(result);
+//     console.log(result);
+//     app.listen(5500);
+//   }).catch(err => {
+//     console.log(err);
+//   });
+
+sequelize.query('SET FOREIGN_KEY_CHECKS = 0')
+.then(function() {
+    return sequelize
+        .sync({
+            force: true
+        });
+})
+.then(function() {
+    return sequelize.query('SET FOREIGN_KEY_CHECKS = 1')
+})
+.then(function() {
+    console.log('Database synchronised.');
     app.listen(5500);
-  }).catch(err => {
+}, function(err) {
     console.log(err);
-  });
+});

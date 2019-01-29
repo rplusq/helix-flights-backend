@@ -4,7 +4,7 @@ const providersController = require('../controllers/providers');
 
 const router = express.Router();
 
-router.get('/', providersController.getAll());
+router.get('/', providersController.getAll);
 
 //Gets all the providers in the database
 router.get('/providers',providersController.getProviders);
