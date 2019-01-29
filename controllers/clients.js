@@ -2,6 +2,7 @@ const Client = require('../models/Client'); //We import our model
 
 exports.getAll = async (req, res, next) => {
     const clients = await Client.getAll();
+<<<<<<< HEAD
     res.status(200).send({data: clients});
 }
 
@@ -85,3 +86,13 @@ exports.postDeleteClient = (req, res, next) => {
   };
 
 
+=======
+    res.status(200).json({data: clients});
+}
+
+exports.getById = async (req, res, next) => {
+    const id = req.query.id;
+    const cliente = await Client.findById(id);
+    res.status(200).json(cliente);
+}
+>>>>>>> junior

@@ -15,4 +15,6 @@ router.post('/add-client',clientsController.PostClient)
 //Deletes a specific client from the database
 router.post('/delete-client',clientsController.postDeleteClient)
 
+router.get('/id/:id', clientsController.getById)
+
 module.exports = router;

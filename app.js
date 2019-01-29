@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const sequelize = require('./util/database'); //Database instance 
 const cors = require('cors');
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+
 app.use(cors()); // Allows Cross Origin Request
 
 // Middleware, cada request que le haga a la base de datos se canaliza
@@ -47,14 +49,13 @@ Client.hasMany(FlightTicket);
 
 
 
+app.use(async (req, res, next) => {
+  const client = await Client.findByPk(1);
+  console.log(client);
+});
 
 // Request's logger
 app.use(logger);  //Manages every request
-
-app.use('/libros', (req, res, next) => {
-  console.log('test libros');
-  next();
-})
 
 // Tests route
 app.get('/test', (req, res, next) =>{
@@ -77,18 +78,8 @@ app.use('/planeTickets', planeTicketsRoutes);
 app.use('/providers', providersRoutes);
 
 // Start server in port 5500
-// app.listen(5500);
+app.listen(5500);
 
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
-// Models get their tables created
 // Models get their tables created
 sequelize.sync({ force: true })
 //.sync()
