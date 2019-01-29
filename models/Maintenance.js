@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const PlaneMaintenance = sequelize.define('planemaintenance', {
+const Maintenance = sequelize.define('maintenance', {
 
   id: 
   {
@@ -16,4 +16,4 @@ const PlaneMaintenance = sequelize.define('planemaintenance', {
 
 });
 
-module.exports = PlaneMaintenance;
+module.exports = Maintenance;

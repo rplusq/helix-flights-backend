@@ -2,12 +2,11 @@ const Client = require('../models/Client'); //We import our model
 
 exports.getAll = async (req, res, next) => {
     const clients = await Client.getAll();
-<<<<<<< HEAD
     res.status(200).send({data: clients});
 }
 
 //This method will save immediately our object to the database
-exports.PostClient = (req,res,next) => 
+exports.postClient = (req,res,next) => 
 {
     const name= req.body.name;
     const lastname = req.body.lastname;
@@ -31,7 +30,7 @@ exports.PostClient = (req,res,next) =>
 }
 
 //This method gets all the clients from the database
-exports.GetClients = (req,res,next) => 
+exports.getClients = (req,res,next) => 
 {
     Client.findAll().then( 
 
@@ -49,12 +48,12 @@ exports.GetClients = (req,res,next) =>
 //This method edits  and updates the attributes of a Client
 exports.postEditClient = (req,res,next) =>
 {
-    const clientid = req.body.clientid;
+    const id = req.body.id;
     const updname= req.body.name;
     const updlastname = req.body.lastname;
     const updemail= req.body.email;
 
-    Client.findById(clientid).then(client=>
+    Client.findByPk(id).then(client=>
         {
             client.name = updname;
             client.lastname = updlastname;
@@ -72,27 +71,26 @@ exports.postEditClient = (req,res,next) =>
         console.log(err);});
 }
 
+//This method deletes the Client of the database
 exports.postDeleteClient = (req, res, next) => {
-    const clienteid = req.body.clienteid;
+    const id = req.body.id;
 
-    Client.findById(prodId)
-      .then(cliente => {
-        return cliente.destroy();
+    Client.findByPk(id)
+      .then(client => {
+        return client.destroy();
       })
       .then(result => {
-        console.log('DESTROYED PRODUCT');
+        console.log('Client deleted successfully');
       })
       .catch(err => console.log(err));
   };
 
 
-=======
-    res.status(200).json({data: clients});
-}
-
-exports.getById = async (req, res, next) => {
+  exports.getById = async (req, res, next) => 
+  {
     const id = req.query.id;
-    const cliente = await Client.findById(id);
+    const cliente = await Client.findByPk(id);
     res.status(200).json(cliente);
-}
->>>>>>> junior
+  }
+
+

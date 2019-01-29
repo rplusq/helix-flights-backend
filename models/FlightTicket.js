@@ -15,7 +15,6 @@ const FlightTicket= sequelize.define('flightticket', {
 
   initialprice: Sequelize.FLOAT,          //Initial price of the ticket. Changes will depend on the date of purchase
   purchasedate: Sequelize.DATE,
-  discount: Sequelize.FLOAT,
   discounttype: Sequelize.STRING,
 
 });
