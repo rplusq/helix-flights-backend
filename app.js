@@ -32,15 +32,19 @@ const Client = require('./models/Client');
 const Crew = require('./models/Crew');
 const Flight = require('./models/Flight');
 const FlightTicket = require('./models/FlightTicket');
-// const Itinerary = require('./models/Itinerary');
+const Itinerary = require('./models/Itinerary');
 const Manufacturer = require('./models/Manufacturer');
 const Passenger = require('./models/Passenger');
 const Plane = require('./models/Plane');
-// const PlaneMaintenance = require('./models/PlaneMaintenance');
+const PlaneMaintenance = require('./models/PlaneMaintenance');
 const PlaneModel = require('./models/PlaneModel');
 const PlaneTicket = require('./models/PlaneTicket');
 const Provider = require('./models/Provider');
 
+app.use(async (req, res, next) => {
+  const client = await Client.findByPk(1);
+  console.log(client);
+});
 
 // Request's logger
 app.use(logger);
