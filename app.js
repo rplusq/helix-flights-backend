@@ -87,8 +87,6 @@ app.use('/providers', providersRoutes);
 sequelize. //sync({force:true})
 sync()
     .then(result => {
-
-
         console.log(result);
         app.listen(5500);
     }).catch(err => {

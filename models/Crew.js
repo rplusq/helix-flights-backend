@@ -8,7 +8,8 @@ const Crew = sequelize.define('crew', {
   {
     type: Sequelize.INTEGER,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
 
   passport: Sequelize.INTEGER,

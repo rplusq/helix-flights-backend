@@ -3,7 +3,7 @@ const Airport = require('../models/Airport');
 exports.getAll = async (req, res, next) => {
     try {
         const airports = await Airport.findAll();
-        res.send({ data: airports });
+        res.json(airports);
     } catch (error) {
         console.log(error);
     }
