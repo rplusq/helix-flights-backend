@@ -89,11 +89,12 @@ sequelize
     console.error('Unable to connect to the database:', err);
   });
 // Models get their tables created
+// Models get their tables created
 sequelize.sync({ force: true })
 //.sync()
   .then(result => {
     
-    return Client.findById(1);
+    return Client.findByPk(1);
     console.log(result);
     app.listen(5500);
   }).then(client=> { if(!client)  {return Client.create({name:'Gi',lastname:'Gi', email:'gi'})}; return user; })
