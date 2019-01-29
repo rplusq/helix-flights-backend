@@ -5,5 +5,4 @@ const sequelize = new Sequelize('helixflights', 'helixadmin', '123456helix', {
   host: 'aethersol.com'
 });
 
-
 module.exports = sequelize;
