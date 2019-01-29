@@ -38,36 +38,26 @@ exports.postCrew = (req, res, next) => {
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Crew
-exports.putCrew = (req, res, next) => {
-    const id = req.body.id;
-    const updpassport = req.body.passport;
-    const updname = req.body.name;
-    const updlastname = req.body.lastname;
-    const updrole = req.body.role;
+exports.putCrew = async (req, res, next) => {
+    try {
+        const id = req.body.id;
 
-    Crew.findByPk(id).then(Crew => {
-        Crew.passport = updpassport;
-        Crew.name = updname;
-        Crew.lastname = updlastname;
-        Crew.role = updrole;
-        return Crew.save();
-    }
+        const person = await Crew.findByPk(id);
 
-    ).then(result => {
-
+        const result = await person.update(req.body);
         console.log(result);
         console.log('Edited Crew');
         res.send(result);
+    } catch (error) {
+        console.log(error);
+        res.send(error);
+    }
+};
 
-    }).catch(err => {
-        res.send(err);
-        console.log(err);
-    });
-}
 
 //This method deletes the Crew of the database
 exports.deleteCrew = (req, res, next) => {
-    const id = req.body.id;
+    const id = req.params.id;
 
     Crew.findByPk(id)
         .then(Crew => {
