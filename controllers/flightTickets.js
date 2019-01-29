@@ -93,6 +93,6 @@ exports.postDeleteFlightTicket = (req, res, next) => {
   {
     const id = req.query.id;
     const FlightTicket = await FlightTicket.findByPk(id);
-    res.status(200).json(cliente);
+    res.status(200).json(FlightTicket);
   }
 

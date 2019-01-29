@@ -8,7 +8,7 @@ router.get('/', planesController.getAll);
 
 
 //Gets all the planes in the database
-router.get('/plane',planesController.getPlane);
+router.get('/plane',planesController.getPlanes);
 
 //Creates a specific plane in the database
 router.post('/add-plane',planesController.postPlane);
