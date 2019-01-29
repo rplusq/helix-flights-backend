@@ -25,6 +25,8 @@ exports.postItinerary = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
+
 }
 
 //This method gets all the Itinerary from the database
@@ -38,13 +40,13 @@ exports.getItinerary = (req,res,next) =>
 
         console.log(err);
     });
-
+    res.status(200).json(Itinerary);
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Itinerary
-exports.postEditItinerary = (req,res,next) =>
+exports.putItinerary = (req,res,next) =>
 {
     const id = req.body.id;
     const updduration= req.body.duration;
@@ -65,10 +67,11 @@ exports.postEditItinerary = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the Itinerary of the database
-exports.postDeleteItinerary = (req, res, next) => {
+exports.deleteItinerary = (req, res, next) => {
     const id = req.body.id;
 
     Itinerary.findByPk(id)
@@ -79,6 +82,7 @@ exports.postDeleteItinerary = (req, res, next) => {
         console.log('Itinerary deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 

@@ -30,6 +30,8 @@ exports.postCrew = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
+
 }
 
 //This method gets all the Crew from the database
@@ -43,13 +45,13 @@ exports.getCrew = (req,res,next) =>
 
         console.log(err);
     });
-
+    res.status(200).json(Crew);
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Crew
-exports.postEditCrew = (req,res,next) =>
+exports.putCrew = (req,res,next) =>
 {
     const id = req.body.id;
     const updpassport = req.body.passport;
@@ -74,10 +76,11 @@ exports.postEditCrew = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the Crew of the database
-exports.postDeleteCrew = (req, res, next) => {
+exports.deleteCrew = (req, res, next) => {
     const id = req.body.id;
 
     Crew.findByPk(id)
@@ -88,6 +91,7 @@ exports.postDeleteCrew = (req, res, next) => {
         console.log('Crew deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 

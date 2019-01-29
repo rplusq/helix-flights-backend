@@ -10,11 +10,14 @@ router.get('/', flightsController.getAll);
 router.get('/flights',flightsController.getFlight);
 
 //Creates a specific flight in the database
-router.post('/add-flight',flightsController.postFlight)
+router.post('/add-flight',flightsController.postFlight);
+
+//Updates a specific flight in the database
+router.put('/update-flight',flightsController.putFlight);
 
 //Deletes a specific flight from the database
-router.post('/delete-flight',flightsController.postDeleteFlight)
+router.delete('/delete-flight',flightsController.deleteFlight);
 
-router.get('/id/:id', flightsController.getById)
+router.get('/id/:id', flightsController.getById);
 
 module.exports = router;

@@ -12,10 +12,13 @@ router.get('/providers',providersController.getProviders);
 //Creates a specific provider in the database
 router.post('/add-provider',providersController.postProviders);
 
+//Creates a specific provider in the database
+router.put('/add-provider',providersController.putProviders);
+
+
 //Deletes a specific provider from the database
-router.post('/delete-provider',providersController.postDeleteProviders);
+router.delete('/delete-provider',providersController.deleteProviders);
 
 router.get('/id/:id', providersController.getById);
-
 
 module.exports = router;

@@ -27,6 +27,7 @@ exports.postManufacturer = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
 }
 
 //This method gets all the Manufacturer from the database
@@ -40,13 +41,14 @@ exports.getManufacturer = (req,res,next) =>
 
         console.log(err);
     });
+    res.status(200).json(Manufacturer);
 
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Manufacturer
-exports.postEditManufacturer = (req,res,next) =>
+exports.putManufacturer = (req,res,next) =>
 {
     const id = req.body.id;
     const updname = req.body.name;
@@ -69,10 +71,11 @@ exports.postEditManufacturer = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the Manufacturer of the database
-exports.postDeleteManufacturer = (req, res, next) => {
+exports.deleteManufacturer = (req, res, next) => {
     const id = req.body.id;
 
     Manufacturer.findByPk(id)
@@ -83,6 +86,7 @@ exports.postDeleteManufacturer = (req, res, next) => {
         console.log('Manufacturer deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 

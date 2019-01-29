@@ -27,12 +27,13 @@ exports.postProviders = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
 }
 
 //This method gets all the Providerss from the database
 exports.getProviders = (req,res,next) => 
 {
-    Providers.findAll().then( 
+    Provider.findAll().then( 
 
         //Here we have to code where do we want the results to render
 
@@ -40,13 +41,14 @@ exports.getProviders = (req,res,next) =>
 
         console.log(err);
     });
+    res.status(200).json(Provider);
 
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Providers
-exports.postEditProviders = (req,res,next) =>
+exports.putProviders = (req,res,next) =>
 {
     const id = req.body.id;
     const updanswertime= req.body.answertime;
@@ -70,10 +72,11 @@ exports.postEditProviders = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the Providers of the database
-exports.postDeleteProviders = (req, res, next) => {
+exports.deleteProviders = (req, res, next) => {
     const id = req.body.id;
 
     Providers.findByPk(id)
@@ -84,6 +87,7 @@ exports.postDeleteProviders = (req, res, next) => {
         console.log('Providers deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 

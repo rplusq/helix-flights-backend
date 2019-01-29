@@ -27,6 +27,8 @@ exports.postMaintenance = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
+
 }
 
 //This method gets all the Maintenance from the database
@@ -41,12 +43,13 @@ exports.getMaintenance = (req,res,next) =>
         console.log(err);
     });
 
+    res.status(200).json(Maintenance);
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Maintenance
-exports.postEditMaintenance = (req,res,next) =>
+exports.putMaintenance = (req,res,next) =>
 {
     const id = req.body.id;
     const updname = req.body.name;
@@ -69,10 +72,11 @@ exports.postEditMaintenance = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the Maintenance of the database
-exports.postDeleteMaintenance = (req, res, next) => {
+exports.deleteMaintenance = (req, res, next) => {
     const id = req.body.id;
 
     Maintenance.findByPk(id)
@@ -83,6 +87,7 @@ exports.postDeleteMaintenance = (req, res, next) => {
         console.log('Maintenance deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 

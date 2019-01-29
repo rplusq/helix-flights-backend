@@ -32,6 +32,8 @@ exports.postPassenger = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
+
 }
 
 //This method gets all the Passengers from the database
@@ -46,12 +48,14 @@ exports.getPassengers = (req,res,next) =>
         console.log(err);
     });
 
+    res.status(200).json(Passenger);
+
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Passenger
-exports.postEditPassenger = (req,res,next) =>
+exports.putPassenger = (req,res,next) =>
 {
     const id = req.body.id;
     const updname= req.body.name;
@@ -79,10 +83,11 @@ exports.postEditPassenger = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the Passenger of the database
-exports.postDeletePassenger = (req, res, next) => {
+exports.deletePassenger = (req, res, next) => {
     const id = req.body.id;
 
     Passenger.findByPk(id)
@@ -93,6 +98,7 @@ exports.postDeletePassenger = (req, res, next) => {
         console.log('Passenger deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 

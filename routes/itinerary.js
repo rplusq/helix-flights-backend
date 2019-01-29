@@ -12,8 +12,11 @@ router.get('/itinerary',itineraryController.getItinerary);
 //Creates a specific itinerary in the database
 router.post('/add-itinerary',itineraryController.postItinerary);
 
+//Creates a specific itinerary in the database
+router.put('/update-itinerary',itineraryController.putItinerary);
+
 //Deletes a specific itinerary from the database
-router.post('/delete-itinerary',itineraryController.postDeleteitinerary);
+router.delete('/delete-itinerary',itineraryController.deleteItinerary);
 
 router.get('/id/:id', itineraryController.getById);
 

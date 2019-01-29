@@ -30,6 +30,8 @@ exports.postPlane = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
+
 }
 
 //This method gets all the Planes from the database
@@ -43,13 +45,14 @@ exports.getPlanes = (req,res,next) =>
 
         console.log(err);
     });
+    res.status(200).json(Plane);
 
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Plane
-exports.postEditPlane = (req,res,next) =>
+exports.putPlane = (req,res,next) =>
 {
     const licenseplate = req.body.licenseplate;
     const updmedicalsupplies= req.body.medicalsupplies;
@@ -74,10 +77,11 @@ exports.postEditPlane = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the Plane of the database
-exports.postDeletePlane = (req, res, next) => {
+exports.deletePlane = (req, res, next) => {
     const licenseplate = req.body.id;
 
     Plane.findByPk(licenseplate)
@@ -88,6 +92,7 @@ exports.postDeletePlane = (req, res, next) => {
         console.log('Plane deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 

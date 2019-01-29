@@ -13,8 +13,11 @@ router.get('/manufacturer',manufacturersController.getManufacturer);
 //Creates a specific manufacturer in the database
 router.post('/add-manufacturer',manufacturersController.postManufacturer);
 
+//Creates a specific manufacturer in the database
+router.put('/update-manufacturer',manufacturersController.putManufacturer);
+
 //Deletes a specific manufacturer from the database
-router.post('/delete-manufacturer',manufacturersController.postDeleteManufacturer);
+router.delete('/delete-manufacturer',manufacturersController.deleteManufacturer);
 
 router.get('/id/:id', manufacturersController.getById);
 

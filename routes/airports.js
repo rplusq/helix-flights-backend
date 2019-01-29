@@ -13,7 +13,7 @@ router.get('/airports', airportsController.getAirports);
 router.post('/add-airport',airportsController.postAirport);
 
 //Deletes a specific client from the database
-router.post('/delete-airport',airportsController.postDeleteAirport);
+router.delete('/delete-airport',airportsController.deleteAirport);
 
 router.get('/id/:id', airportsController.getById);
 

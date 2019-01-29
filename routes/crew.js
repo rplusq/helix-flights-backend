@@ -11,11 +11,14 @@ router.get('/', crewController.getAll);
 router.get('/crew',crewController.getCrew);
 
 //Creates a specific client in the database
-router.post('/add-crew',crewController.postCrew)
+router.post('/add-crew',crewController.postCrew);
 
 //Deletes a specific client from the database
-router.post('/delete-crew',crewController.postDeleteCrew)
+router.put('/update-crew',crewController.putCrew);
 
-router.get('/id/:id', crewController.getById)
+//Deletes a specific client from the database
+router.delete('/delete-crew',crewController.deleteCrew);
+
+router.get('/id/:id', crewController.getById);
 
 module.exports = router;

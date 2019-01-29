@@ -1,8 +1,8 @@
-const PlaneTicketTicket = require('../models/PlaneTicketTicket');
+const PlaneTicket = require('../models/PlaneTicket');
 
 exports.getAll = async (req, res, next) => {
-    const PlaneTicketTickets = await PlaneTicketTicket.getAll();
-    res.status(200).send({data: PlaneTicketTickets});
+    const PlaneTickets = await PlaneTicket.getAll();
+    res.status(200).send({data: PlaneTickets});
 }
 
 
@@ -27,6 +27,8 @@ exports.postPlaneTicket = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
+
 }
 
 //This method gets all the PlaneTickets from the database
@@ -40,13 +42,14 @@ exports.getPlaneTickets = (req,res,next) =>
 
         console.log(err);
     });
+    res.status(200).json(PlaneTicket);
 
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a PlaneTicket
-exports.postEditPlaneTicket = (req,res,next) =>
+exports.putPlaneTicket = (req,res,next) =>
 {
     const id = req.body.id;
     const updassignedseat= req.body.assignedseat;
@@ -69,10 +72,11 @@ exports.postEditPlaneTicket = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the PlaneTicket of the database
-exports.postDeletePlaneTicket = (req, res, next) => {
+exports.deletePlaneTicket = (req, res, next) => {
     const id = req.body.id;
 
     PlaneTicket.findByPk(id)
@@ -83,6 +87,7 @@ exports.postDeletePlaneTicket = (req, res, next) => {
         console.log('PlaneTicket deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 

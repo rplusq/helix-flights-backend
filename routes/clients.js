@@ -10,10 +10,13 @@ router.get('/', clientsController.getAll);
 router.get('/clients',clientsController.getClients);
 
 //Creates a specific client in the database
-router.post('/add-client',clientsController.postClient)
+router.post('/add-client',clientsController.postClient);
+
+//Updates a specific client in the database
+router.put('/update-client',clientsController.putClient);
 
 //Deletes a specific client from the database
-router.post('/delete-client',clientsController.postDeleteClient)
+router.delete('/delete-client',clientsController.deleteClient);
 
 router.get('/id/:id', clientsController.getById)
 

@@ -13,8 +13,11 @@ router.get('/plane',planesController.getPlanes);
 //Creates a specific plane in the database
 router.post('/add-plane',planesController.postPlane);
 
+//Creates a specific plane in the database
+router.put('/update-plane',planesController.putPlane);
+
 //Deletes a specific plane from the database
-router.post('/delete-plane',planesController.postDeletePlane);
+router.delete('/delete-plane',planesController.deletePlane);
 
 router.get('/id/:id', planesController.getById);
 

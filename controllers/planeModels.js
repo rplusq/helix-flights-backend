@@ -54,6 +54,8 @@ exports.postPlaneModel = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
+
 }
 
 //This method gets all the PlaneModels from the database
@@ -68,12 +70,14 @@ exports.getPlaneModels = (req,res,next) =>
         console.log(err);
     });
 
+    res.status(200).json(PlaneModel);
+
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a PlaneModel
-exports.postEditPlaneModel = (req,res,next) =>
+exports.putPlaneModel = (req,res,next) =>
 {
     const model= req.body.model;
     const updfcseats = req.body.fcseats;
@@ -124,10 +128,11 @@ exports.postEditPlaneModel = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the PlaneModel of the database
-exports.postDeletePlaneModel = (req, res, next) => {
+exports.deletePlaneModel = (req, res, next) => {
     const id = req.body.id;
 
     PlaneModel.findByPk(id)
@@ -138,6 +143,7 @@ exports.postDeletePlaneModel = (req, res, next) => {
         console.log('PlaneModel deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 

@@ -26,6 +26,8 @@ exports.postFlight = (req,res,next) =>
         console.log(err);
     });
 
+    res.sendStatus(200);
+
 }
 
 //This method gets all the Flight from the database
@@ -39,13 +41,14 @@ exports.getFlight = (req,res,next) =>
 
         console.log(err);
     });
+    res.status(200).json(Flight);
 
 }
 
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Flight
-exports.postEditFlight = (req,res,next) =>
+exports.putFlight = (req,res,next) =>
 {
     const id = req.body.id;
     const upddate= req.body.date;
@@ -65,10 +68,11 @@ exports.postEditFlight = (req,res,next) =>
     }).catch(err =>{ 
 
         console.log(err);});
+        res.sendStatus(200);
 }
 
 //This method deletes the Flight of the database
-exports.postDeleteFlight = (req, res, next) => {
+exports.deleteFlight = (req, res, next) => {
     const id = req.body.id;
 
     Flight.findByPk(id)
@@ -79,6 +83,7 @@ exports.postDeleteFlight = (req, res, next) => {
         console.log('Flight deleted successfully');
       })
       .catch(err => console.log(err));
+      res.sendStatus(200);
   };
 
 
