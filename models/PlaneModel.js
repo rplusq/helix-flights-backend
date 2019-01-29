@@ -27,8 +27,6 @@ const PlaneModel = sequelize.define('planemodel',
   takeoffdistance: { type: Sequelize.INTEGER, allowNull: false },
   landdistance: { type: Sequelize.INTEGER, allowNull: false },
   cabinluggage: { type: Sequelize.INTEGER, allowNull: false },
-  idmanufacturer: { type: Sequelize.INTEGER, allowNull: false },
-  idmodel: { type: Sequelize.INTEGER, allowNull: false },
   gasliters: { type: Sequelize.INTEGER, allowNull: false },
   gastype: { type: Sequelize.INTEGER, allowNull: false },
 

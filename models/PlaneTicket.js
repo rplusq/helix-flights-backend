@@ -12,8 +12,8 @@ const PlaneTicket = sequelize.define('planeticket', {
     primaryKey: true
   },
 
-  name: Sequelize.STRING,
-  duration: Sequelize.DATE,
+  asignedseat: Sequelize.STRING,
+  luggagenumber: Sequelize.DATE,
 
 
 });

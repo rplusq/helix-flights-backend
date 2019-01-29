@@ -15,7 +15,7 @@ const Passenger = sequelize.define('passenger', {
   name: Sequelize.STRING,       
   lastname: Sequelize.STRING,
   passport: {  type: Sequelize.INTEGER, allowNull: false},
-  age: { type: Sequelize.INTEGER, allowNull: false },
+  birthdate: { type: Sequelize.DATE, allowNull: false },
   country: Sequelize.STRING,
 
 

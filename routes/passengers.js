@@ -6,4 +6,16 @@ const router = express.Router();
 
 router.get('/', passengersController.getAll);
 
+
+//Gets all the passengers in the database
+router.get('/passenger',passengersController.getPassengers);
+
+//Creates a specific passenger in the database
+router.post('/add-passenger',passengersController.postPassenger);
+
+//Deletes a specific passenger from the database
+router.post('/delete-passenger',passengersController.postDeletePassenger);
+
+router.get('/id/:id', passengersController.getById);
+
 module.exports = router;

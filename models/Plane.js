@@ -14,9 +14,7 @@ const Plane = sequelize.define('plane', {
   medicalsupplies: { type: Sequelize.INTEGER, allowNull: false },
   crewnumber: { type: Sequelize.INTEGER, allowNull: false },
   status: Sequelize.STRING,
-  idmodel: { type: Sequelize.INTEGER, allowNull: false },
-
-
+  
 });
 
 module.exports = Plane;

@@ -12,8 +12,6 @@ const Itinerary = sequelize.define('itinerary', {
     primaryKey: true
   },
 
-  iatadeparture: Sequelize.STRING(3),
-  iataarrival: Sequelize.STRING(3),
   duration: Sequelize.TIME,
 
 });

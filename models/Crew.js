@@ -4,13 +4,14 @@ const sequelize = require('../util/database');
 
 const Crew = sequelize.define('crew', {
 
-  passport: 
+  id: 
   {
     type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true
   },
 
+  passport: Sequelize.INTEGER,
   name: Sequelize.STRING,
   lastname: Sequelize.STRING,
   role: Sequelize.STRING,
