@@ -4,21 +4,18 @@ const providersController = require('../controllers/providers');
 
 const router = express.Router();
 
+//Gets all the providers in the database
 router.get('/', providersController.getAll);
 
-//Gets all the providers in the database
-router.get('/providers',providersController.getProviders);
-
 //Creates a specific provider in the database
-router.post('/add-provider',providersController.postProviders);
+router.post('/add',providersController.postProviders);
 
-//Creates a specific provider in the database
-router.put('/add-provider',providersController.putProviders);
-
+//Updates a specific provider in the database
+router.put('/update',providersController.putProviders);
 
 //Deletes a specific provider from the database
-router.delete('/delete-provider',providersController.deleteProviders);
+router.delete('/delete/:id',providersController.deleteProviders);
 
-router.get('/id/:id', providersController.getById);
+router.get('/:id', providersController.getById);
 
 module.exports = router;

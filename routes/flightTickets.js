@@ -14,9 +14,8 @@ router.post('/add',flightTicketsController.postFlightTicket);
 router.put('/update',flightTicketsController.postFlightTicket);
 
 //Deletes a specific flight tickets from the database
-router.delete('/delete',flightTicketsController.deleteFlightTicket);
+router.delete('/delete/:id',flightTicketsController.deleteFlightTicket);
 
-router.get('/id/:id', flightTicketsController.getById);
+router.get('/:id', flightTicketsController.getById);
 
-router.get('/id/:id', flightTicketsController.getById);
 module.exports = router;

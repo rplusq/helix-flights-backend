@@ -4,22 +4,19 @@ const planesController = require('../controllers/planes');
 
 const router = express.Router();
 
+//Gets all the planes in the database
 router.get('/', planesController.getAll);
 
-
-//Gets all the planes in the database
-router.get('/plane',planesController.getPlanes);
+//Creates a specific plane in the database
+router.post('/add',planesController.postPlane);
 
 //Creates a specific plane in the database
-router.post('/add-plane',planesController.postPlane);
-
-//Creates a specific plane in the database
-router.put('/update-plane',planesController.putPlane);
+router.put('/update',planesController.putPlane);
 
 //Deletes a specific plane from the database
-router.delete('/delete-plane',planesController.deletePlane);
+router.delete('/delete/:id',planesController.deletePlane);
 
-router.get('/id/:id', planesController.getById);
+router.get('/:id', planesController.getById);
 
 
 module.exports = router;

@@ -17,6 +17,6 @@ router.delete('/delete/:iatacode',airportsController.deleteAirport);
 
 router.put('/update', airportsController.updateAirport);
 
-router.get('/id', airportsController.getById);
+router.get('/:id', airportsController.getById);
 
 module.exports = router;

@@ -6,18 +6,15 @@ const router = express.Router();
 
 router.get('/', flightsController.getAll);
 
-//Gets all the flights in the database
-router.get('/flights',flightsController.getFlight);
-
 //Creates a specific flight in the database
-router.post('/add-flight',flightsController.postFlight);
+router.post('/add',flightsController.postFlight);
 
 //Updates a specific flight in the database
-router.put('/update-flight',flightsController.putFlight);
+router.put('/update',flightsController.putFlight);
 
 //Deletes a specific flight from the database
-router.delete('/delete-flight',flightsController.deleteFlight);
+router.delete('/delete/:id',flightsController.deleteFlight);
 
-router.get('/id/:id', flightsController.getById);
+router.get('/:id', flightsController.getById);
 
 module.exports = router;

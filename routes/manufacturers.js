@@ -6,19 +6,15 @@ const router = express.Router();
 
 router.get('/', manufacturersController.getAll);
 
-
-//Gets all the manufacturers in the database
-router.get('/manufacturer',manufacturersController.getManufacturer);
+//Creates a specific manufacturer in the database
+router.post('/add',manufacturersController.postManufacturer);
 
 //Creates a specific manufacturer in the database
-router.post('/add-manufacturer',manufacturersController.postManufacturer);
-
-//Creates a specific manufacturer in the database
-router.put('/update-manufacturer',manufacturersController.putManufacturer);
+router.put('/update',manufacturersController.putManufacturer);
 
 //Deletes a specific manufacturer from the database
-router.delete('/delete-manufacturer',manufacturersController.deleteManufacturer);
+router.delete('/delete/:id',manufacturersController.deleteManufacturer);
 
-router.get('/id/:id', manufacturersController.getById);
+router.get('/:id', manufacturersController.getById);
 
 module.exports = router;

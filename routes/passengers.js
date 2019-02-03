@@ -6,19 +6,15 @@ const router = express.Router();
 
 router.get('/', passengersController.getAll);
 
-
-//Gets all the passengers in the database
-router.get('/passenger',passengersController.getPassengers);
+//Creates a specific passenger in the database
+router.post('/add',passengersController.postPassenger);
 
 //Creates a specific passenger in the database
-router.post('/add-passenger',passengersController.postPassenger);
-
-//Creates a specific passenger in the database
-router.put('/update-passenger',passengersController.putPassenger);
+router.put('/update',passengersController.putPassenger);
 
 //Deletes a specific passenger from the database
-router.delete('/delete-passenger',passengersController.deletePassenger);
+router.delete('/delete/:id',passengersController.deletePassenger);
 
-router.get('/id/:id', passengersController.getById);
+router.get('/:id', passengersController.getById);
 
 module.exports = router;

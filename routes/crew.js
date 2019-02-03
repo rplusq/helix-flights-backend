@@ -18,6 +18,6 @@ router.put('/update',crewController.putCrew);
 //Deletes a specific client from the database
 router.delete('/delete/:id',crewController.deleteCrew);
 
-router.get('/id/:id', crewController.getById);
+router.get('/:id', crewController.getById);
 
 module.exports = router;

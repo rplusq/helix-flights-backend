@@ -4,22 +4,19 @@ const planeTicketsController = require('../controllers/planeTickets');
 
 const router = express.Router();
 
+//Gets all the planes in the database
 router.get('/', planeTicketsController.getAll);
 
-
-//Gets all the planes in the database
-router.get('/planetickets',planeTicketsController.getPlaneTickets);
-
 //Creates a specific plane in the database
-router.post('/add-planetickets',planeTicketsController.postPlaneTicket);
+router.post('/add',planeTicketsController.postPlaneTicket);
 
-//Creates a specific plane in the database
-router.put('/add-planetickets',planeTicketsController.putPlaneTicket);
+//Updates a specific plane in the database
+router.put('/update',planeTicketsController.putPlaneTicket);
 
 //Deletes a specific plane from the database
-router.delete('/delete-planetickets',planeTicketsController.deletePlaneTicket);
+router.delete('/delete/:id',planeTicketsController.deletePlaneTicket);
 
-router.get('/id/:id', planeTicketsController.getById);
+router.get('/:id', planeTicketsController.getById);
 
 
 module.exports = router;
