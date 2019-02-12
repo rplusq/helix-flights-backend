@@ -4,6 +4,7 @@ const flightsController = require('../controllers/flights');
 
 const router = express.Router();
 
+//Gets all the flights in the database
 router.get('/', flightsController.getAll);
 
 //Creates a specific flight in the database

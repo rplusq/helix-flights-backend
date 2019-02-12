@@ -39,7 +39,7 @@ exports.postAirport = (req, res, next) => {
 }
 
 //This method gets all the Airports from the database
-exports.getAirports = (req, res, next) => {
+exports.getAll = (req, res, next) => {
     Airport.findAll().then(
 
         //Here we have to code where do we want the results to render

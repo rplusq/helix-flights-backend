@@ -4,6 +4,7 @@ const itineraryController = require('../controllers/itinerary');
 
 const router = express.Router();
 
+//Gets all the itineraries in the database
 router.get('/', itineraryController.getAll);
 
 //Creates a specific itinerary in the database

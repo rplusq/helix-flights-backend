@@ -1,12 +1,5 @@
 const Plane = require('../models/Plane');
 
-exports.getAll = async (req, res, next) => {
-    const planes = await Plane.getAll();
-    res.status(200).send({data: planes});
-}
-
-
-
 //This method will save immediately our object to the database
 exports.postPlane = (req,res,next) => 
 {
@@ -35,7 +28,7 @@ exports.postPlane = (req,res,next) =>
 }
 
 //This method gets all the Planes from the database
-exports.getPlanes = (req,res,next) => 
+exports.getAll = (req,res,next) => 
 {
     Plane.findAll().then( 
 

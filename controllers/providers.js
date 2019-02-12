@@ -1,11 +1,5 @@
 const Provider = require('../models/Provider');
 
-exports.getAll = async (req, res, next) => {
-    const providers = await Provider.getAll();
-    res.status(200).send({data: providers});
-}
-
-
 //This method will save immediately our object to the database
 exports.postProviders = (req,res,next) => 
 {
@@ -31,7 +25,7 @@ exports.postProviders = (req,res,next) =>
 }
 
 //This method gets all the Providerss from the database
-exports.getProviders = (req,res,next) => 
+exports.getAll = (req,res,next) => 
 {
     Provider.findAll().then( 
 

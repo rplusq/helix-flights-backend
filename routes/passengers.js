@@ -4,6 +4,7 @@ const passengersController = require('../controllers/passengers');
 
 const router = express.Router();
 
+//Gets all the passengers in the database
 router.get('/', passengersController.getAll);
 
 //Creates a specific passenger in the database

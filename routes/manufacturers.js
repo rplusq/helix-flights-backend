@@ -4,6 +4,7 @@ const manufacturersController = require('../controllers/manufacturers');
 
 const router = express.Router();
 
+//Gets all the manufacturers in the database
 router.get('/', manufacturersController.getAll);
 
 //Creates a specific manufacturer in the database

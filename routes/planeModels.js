@@ -5,7 +5,6 @@ const planeModelsController = require('../controllers/planeModels');
 const router = express.Router();
 
 //Gets all the planeModels in the database
-
 router.get('/', planeModelsController.getAll);
 
 //Creates a specific planeModel in the database

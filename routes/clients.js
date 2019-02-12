@@ -4,6 +4,7 @@ const clientsController = require('../controllers/clients');
 
 const router = express.Router();
 
+//Gets all the clients in the database
 router.get('/', clientsController.getAll); 
 
 //Creates a specific client in the database

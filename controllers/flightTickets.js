@@ -1,10 +1,5 @@
 const FlightTickets = require('../models/FlightTicket');
 
-exports.getAll = async (req, res, next) => {
-    const flightTickets = await FlightTickets.findAll();
-    res.status(200).json(flightTickets);
-}
-
 //This method will save immediately our object to the database
 exports.postFlightTicket = (req, res, next) => {
 
@@ -33,7 +28,7 @@ exports.postFlightTicket = (req, res, next) => {
 }
 
 //This method gets all the FlightTicket from the database
-exports.getFlightTicket = (req, res, next) => {
+exports.getAll = (req, res, next) => {
     FlightTicket.findAll().then(
 
         //Here we have to code where do we want the results to render

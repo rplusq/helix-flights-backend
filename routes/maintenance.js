@@ -4,6 +4,7 @@ const maintenanceController = require('../controllers/maintenance');
 
 const router = express.Router();
 
+//Gets all the maintenance in the database
 router.get('/', maintenanceController.getAll);
 
 //Creates a specific Maintenance in the database

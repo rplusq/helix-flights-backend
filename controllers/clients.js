@@ -1,10 +1,5 @@
 const Client = require('../models/Client'); //We import our model
 
-exports.getAll = async (req, res, next) => {
-    const clients = await Client.getAll();
-    res.status(200).send({ data: clients });
-}
-
 //This method will save immediately our object to the database
 exports.postClient = (req, res, next) => {
     const name = req.body.name;
@@ -30,7 +25,7 @@ exports.postClient = (req, res, next) => {
 }
 
 //This method gets all the clients from the database
-exports.getClients = (req, res, next) => {
+exports.getAll = (req, res, next) => {
     Client.findAll().then(
 
         //Here we have to code where do we want the results to render
