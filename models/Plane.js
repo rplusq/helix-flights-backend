@@ -4,15 +4,15 @@ const sequelize = require('../util/database');
 
 const Plane = sequelize.define('plane', {
 
-  licenseplate: 
+  license_plate: 
   {
     type: Sequelize.STRING,
     allowNull: false,
     primaryKey: true
   },
 
-  medicalsupplies: { type: Sequelize.INTEGER, allowNull: false },
-  crewnumber: { type: Sequelize.INTEGER, allowNull: false },
+  medical_supplies: { type: Sequelize.INTEGER, allowNull: false },
+  crew_number: { type: Sequelize.INTEGER, allowNull: false },
   status: Sequelize.STRING,
   
 });

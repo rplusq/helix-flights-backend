@@ -13,7 +13,7 @@ const Client = sequelize.define('client', {
   },
 
   name: Sequelize.STRING,
-  lastname: Sequelize.STRING,
+  last_name: Sequelize.STRING,
   email: Sequelize.STRING,
 
 });

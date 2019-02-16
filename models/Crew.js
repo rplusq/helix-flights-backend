@@ -14,7 +14,7 @@ const Crew = sequelize.define('crew', {
 
   passport: Sequelize.INTEGER,
   name: Sequelize.STRING,
-  lastname: Sequelize.STRING,
+  last_name: Sequelize.STRING,
   role: Sequelize.STRING,
 
 });

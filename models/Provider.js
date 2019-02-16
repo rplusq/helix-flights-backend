@@ -12,7 +12,7 @@ const Provider = sequelize.define('provider', {
     },
 
     name: Sequelize.STRING,
-    answertime: Sequelize.DATE
+    answer_time: Sequelize.DATE
 });
 
 module.exports = Provider;
