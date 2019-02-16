@@ -13,13 +13,13 @@ exports.getAll = async (req, res, next) => {
 exports.postCrew = (req, res, next) => {
     const passport = Number(req.body.passport);
     const name = req.body.name;
-    const lastname = req.body.lastname;
+    const last_name = req.body.last_name;
     const role = req.body.role;
 
     Crew.create({ //Method provided by sequelize 
         passport: passport,
         name: name,
-        lastname: lastname,
+        last_name: last_name,
         role: role,
 
     }).then(result => {

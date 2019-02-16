@@ -14,19 +14,19 @@ exports.getAll = async (req, res, next) => {
 
 //This method will save immediately our object to the database
 exports.postAirport = (req, res, next) => {
-    const iatacode = req.body.iatacode;
+    const iata_code = req.body.iata_code;
     const city = req.body.city;
     const country = req.body.country;
-    const landdistance = Number(req.body.landdistance);
-    const takeoffdistance = Number(req.body.takeoffdistance);
+    const land_distance = Number(req.body.land_distance);
+    const takeoff_distance = Number(req.body.takeoff_distance);
 
     Airport.create({ //Method provided by sequelize
 
-        iatacode: iatacode,
+        iata_code: iata_code,
         city: city,
         country: country,
-        landdistance: landdistance,
-        takeoffdistance: takeoffdistance,
+        land_distance: land_distance,
+        takeoff_distance: takeoff_distance,
 
     }).then(result => {
 
@@ -55,9 +55,9 @@ exports.getAll = (req, res, next) => {
 exports.deleteAirport = (req, res, next) => {
     console.log(req.query, req.params);
     
-    const iatacode = req.params.iatacode;
+    const iata_code = req.params.iata_code;
 
-    Airport.findByPk(iatacode)
+    Airport.findByPk(iata_code)
         .then(airport => {
             console.log(airport);
             
@@ -81,7 +81,7 @@ exports.getById = async (req, res, next) => {
 // Update an airport
 exports.updateAirport = async (req, res, nex) => {
     try {
-        const airport = await Airport.findByPk(req.body.iatacode);
+        const airport = await Airport.findByPk(req.body.iata_code);
         let end = await airport.update(req.body);
         res.send(end);
     } catch (error) {
