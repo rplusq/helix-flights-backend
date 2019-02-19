@@ -23,7 +23,7 @@ const manufacturersRoutes = require('./routes/manufacturers');
 const passengersRoutes = require('./routes/passengers');
 const planeModelsRoutes = require('./routes/planeModels');
 const planesRoutes = require('./routes/planes');
-const planeTicketsRoutes = require('./routes/planeTickets');
+const TicketsRoutes = require('./routes/Tickets');
 const providersRoutes = require('./routes/providers');
 
 // Import Models
@@ -38,27 +38,36 @@ const Passenger = require('./models/Passenger');
 const Plane = require('./models/Plane');
 const Maintenance = require('./models/Maintenance');
 const PlaneModel = require('./models/PlaneModel');
-const PlaneTicket = require('./models/PlaneTicket');
+const Ticket = require('./models/Ticket');
 const Provider = require('./models/Provider');
+const ProviderPlane = require('./models/ProviderPlane');
+const PlaneMaintenance = require('./models/PlaneMaintenance');
 
 //Relations
-Plane.belongsToMany(Provider, { through: 'provider-plane', foreignKey: 'idplane' });
-Provider.belongsToMany(Plane, { through: 'provider-plane', foreignKey: 'idprovider' });
-Provider.hasMany(Provider, { foreignKey: 'providerId', sourceKey: 'id' });
-Crew.belongsToMany(Flight, { through: 'crew-flight', foreignKey: 'crewId' });
-Flight.belongsToMany(Crew, { through: 'crew-flight', foreignKey: 'id' });
-PlaneModel.hasMany(Plane, { foreignKey: 'idmodel', sourceKey: 'id' });
-Manufacturer.hasMany(PlaneModel, { foreignKey: 'idmanufacturer', sourceKey: 'id' });
-FlightTicket.hasMany(PlaneTicket, { foreignKey: 'idflightticket', sourceKey: 'id' });
-Passenger.hasMany(PlaneTicket, { foreignKey: 'idpassenger', sourceKey: 'id' });
-Plane.hasMany(Flight, { foreignKey: 'plane', sourceKey: 'licenseplate' });
-Itinerary.hasMany(Flight, { foreignKey: 'iditinerary', sourceKey: 'id' });
-Airport.hasOne(Itinerary, { foreignKey: 'iatadeparture', sourceKey: 'iatacode' });
-Airport.hasOne(Itinerary, { foreignKey: 'iataarrival', sourceKey: 'iatacode' });
-Plane.belongsToMany(Maintenance, { through: 'plane-maintenance', foreignKey: 'idplane' })
-Maintenance.belongsToMany(Plane, { through: 'plane-maintenance', foreignKey: 'idmaintenance' })
-PlaneTicket.belongsToMany(Flight, { through: 'planeticket-flight', foreignKey: 'idplaneticket' });
-Flight.belongsToMany(PlaneTicket, { through: 'planeticket-flight', foreignKey: 'idflight' })
+
+//Relations N:M
+Plane.belongsToMany(Provider, { through: ProviderPlane, foreignKey: 'LicensePlate' });
+Provider.belongsToMany(Plane, { through: ProviderPlane , foreignKey: 'ProviderId' });
+Crew.belongsToMany(Flight, { through: 'CrewFlight', foreignKey: 'CrewId' });
+Flight.belongsToMany(Crew, { through: 'CrewFlight', foreignKey: 'FlightId' });
+Plane.belongsToMany(Maintenance, { through: PlaneMaintenance, foreignKey: 'PlaneId' });
+Maintenance.belongsToMany(Plane, { through: PlaneMaintenance, foreignKey: 'MaintenanceId' });
+
+//Relations 1:N
+PlaneModel.hasMany(Plane, { foreignKey: 'FKPlaneModel_PlaneModelId', sourceKey: 'PlaneModelId' });
+Manufacturer.hasMany(PlaneModel, { foreignKey: 'FKManufacturer_ManufacturerId', sourceKey: 'ManufacturerId' });
+Bill.hasMany(Ticket, { foreignKey: 'FKBill_BillId', sourceKey: 'BillId' });
+Passenger.hasMany(Ticket, { foreignKey: 'FKPassenger_PassengerId', sourceKey: 'PassengerId' });
+Plane.hasMany(Flight, { foreignKey: 'FKPlane_LicensePlate', sourceKey: 'LicensePlate' });
+Itinerary.hasMany(Flight, { foreignKey: 'FKPlane_ItineraryId', sourceKey: 'ItineraryId' });
+Ticket.hasMany(Flight, { foreignKey: 'FKTicket_FlightId', sourceKey: 'FlightId' });
+Client.hasMany(Bill, { foreignKey: 'FKClient_ClientId', sourceKey: 'ClientId' });
+Airport.hasMany(Track,{ foreignKey: 'FKAirport_AirportId', sourceKey: 'AiportId' });
+Bill.hasMany(Variation,{ foreignKey: 'FKBill_BillId', sourceKey: 'BillId' });
+
+//Relations 1:1
+Airport.hasOne(Itinerary, { as:'IataDeparture', foreignKey: 'IataCode'});
+Airport.hasOne(Itinerary, { as:'IataArrival', foreignKey: 'IataCode'});
 
 // Request's logger
 app.use(logger);  //Manages every request
@@ -80,7 +89,7 @@ app.use('/manufacturers', manufacturersRoutes);
 app.use('/passengers', passengersRoutes);
 app.use('/planes', planesRoutes);
 app.use('/planeModels', planeModelsRoutes);
-app.use('/planeTickets', planeTicketsRoutes);
+app.use('/Tickets', TicketsRoutes);
 app.use('/providers', providersRoutes);
 
 // Models get their tables created

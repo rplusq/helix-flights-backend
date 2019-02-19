@@ -1,12 +1,12 @@
-const PlaneTicket = require('../models/PlaneTicket');
+const Ticket = require('../models/Ticket');
 
 //This method will save immediately our object to the database
-exports.postPlaneTicket = (req,res,next) => 
+exports.postTicket = (req,res,next) => 
 {
     const assignedseat= req.body.assignedseat;
     const luggagenumber = req.body.luggagenumber;
 
-    PlaneTicket.create({ //Method provided by sequelize, 
+    Ticket.create({ //Method provided by sequelize, 
         
         luggagenumber:luggagenumber,
         assignedseat:assignedseat,
@@ -14,7 +14,7 @@ exports.postPlaneTicket = (req,res,next) =>
     }).then(result => { 
             
         console.log(result);
-        console.log('Created PlaneTicket');
+        console.log('Created Ticket');
 
     }).catch(err =>{ 
 
@@ -25,10 +25,10 @@ exports.postPlaneTicket = (req,res,next) =>
 
 }
 
-//This method gets all the PlaneTickets from the database
+//This method gets all the Tickets from the database
 exports.getAll = (req,res,next) => 
 {
-    PlaneTicket.findAll().then( 
+    Ticket.findAll().then( 
 
         //Here we have to code where do we want the results to render
 
@@ -36,32 +36,32 @@ exports.getAll = (req,res,next) =>
 
         console.log(err);
     });
-    res.status(200).json(PlaneTicket);
+    res.status(200).json(Ticket);
 
 }
 
 //To find specific data with the where condition, tutorial 152
 
-//This method edits  and updates the attributes of a PlaneTicket
-exports.putPlaneTicket = (req,res,next) =>
+//This method edits  and updates the attributes of a Ticket
+exports.putTicket = (req,res,next) =>
 {
     const id = req.body.id;
     const updassignedseat= req.body.assignedseat;
     const updluggagenumber = req.body.luggagenumber;
     
 
-    PlaneTicket.findByPk(id).then(PlaneTicket=>
+    Ticket.findByPk(id).then(Ticket=>
         {
-            PlaneTicket.assignedseat = updassignedseat;
-            PlaneTicket.luggagenumber = updluggagenumber;
+            Ticket.assignedseat = updassignedseat;
+            Ticket.luggagenumber = updluggagenumber;
 
-            return PlaneTicket.save();
+            return Ticket.save();
         }
 
     ).then(result => { 
             
         console.log(result);
-        console.log('Edited PlaneTicket')
+        console.log('Edited Ticket')
 
     }).catch(err =>{ 
 
@@ -69,16 +69,16 @@ exports.putPlaneTicket = (req,res,next) =>
         res.sendStatus(200);
 }
 
-//This method deletes the PlaneTicket of the database
-exports.deletePlaneTicket = (req, res, next) => {
+//This method deletes the Ticket of the database
+exports.deleteTicket = (req, res, next) => {
     const id = req.body.id;
 
-    PlaneTicket.findByPk(id)
-      .then(PlaneTicket => {
-        return PlaneTicket.destroy();
+    Ticket.findByPk(id)
+      .then(Ticket => {
+        return Ticket.destroy();
       })
       .then(result => {
-        console.log('PlaneTicket deleted successfully');
+        console.log('Ticket deleted successfully');
       })
       .catch(err => console.log(err));
       res.sendStatus(200);
@@ -88,8 +88,8 @@ exports.deletePlaneTicket = (req, res, next) => {
   exports.getById = async (req, res, next) => 
   {
     const id = req.query.id;
-    const PlaneTicket = await PlaneTicket.findByPk(id);
-    res.status(200).json(PlaneTicket);
+    const Ticket = await Ticket.findByPk(id);
+    res.status(200).json(Ticket);
   }
 
 

@@ -9,7 +9,7 @@ const Track = sequelize.define('tracks', {
     {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true
+        unique:'compositeIndex'
     },
     Distance: Sequelize.INTEGER
 });
