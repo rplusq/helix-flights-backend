@@ -5,13 +5,13 @@ const sequelize = require('../util/database');
 //The model is used to define the object in the database
 const Track = sequelize.define('tracks', {
 
-    number:
+    Number:
     {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true
     },
-    distance: Sequelize.INTEGER
+    Distance: Sequelize.INTEGER
 });
 
 module.exports = Track;

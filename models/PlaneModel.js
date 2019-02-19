@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const PlaneModel = sequelize.define('planemodel',
   {
-    id: //Identifier
+    PlaneModelId: //Identifier
     {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -13,22 +13,22 @@ const PlaneModel = sequelize.define('planemodel',
 
     },
 
-    model: Sequelize.STRING, //name of the model's plane
-    fc_seats: { type: Sequelize.INTEGER, allowNull: false },
-    eco_seats: { type: Sequelize.INTEGER, allowNull: false },
-    max_speed: { type: Sequelize.INTEGER, allowNull: false },
-    cruising_speed: { type: Sequelize.INTEGER, allowNull: false },
-    empty_weight: { type: Sequelize.INTEGER, allowNull: false },
-    max_weight: { type: Sequelize.INTEGER, allowNull: false },
-    internet: Sequelize.BOOLEAN,
-    tv: Sequelize.BOOLEAN,
-    bathrooms: { type: Sequelize.INTEGER, allowNull: false },
-    exits: { type: Sequelize.INTEGER, allowNull: false },
-    takeoff_distance: { type: Sequelize.INTEGER, allowNull: false },
-    land_distance: { type: Sequelize.INTEGER, allowNull: false },
-    cabin_luggage: { type: Sequelize.INTEGER, allowNull: false },
-    gas_liters: { type: Sequelize.INTEGER, allowNull: false },
-    gas_type: { type: Sequelize.INTEGER, allowNull: false },
+    Model: Sequelize.STRING, //name of the model's plane
+    FirstClassSeats: { type: Sequelize.INTEGER, allowNull: false },
+    EconomicSeats: { type: Sequelize.INTEGER, allowNull: false },
+    MaxSpeed: { type: Sequelize.INTEGER, allowNull: false },
+    CruisingSpeed: { type: Sequelize.INTEGER, allowNull: false },
+    EmptyWeight: { type: Sequelize.INTEGER, allowNull: false },
+    MaxWeight: { type: Sequelize.INTEGER, allowNull: false },
+    Internet: Sequelize.BOOLEAN,
+    Tv: Sequelize.BOOLEAN,
+    Bathrooms: { type: Sequelize.INTEGER, allowNull: false },
+    Exits: { type: Sequelize.INTEGER, allowNull: false },
+    TakeoffDistance: { type: Sequelize.INTEGER, allowNull: false },
+    LandDistance: { type: Sequelize.INTEGER, allowNull: false },
+    CabinLuggage: { type: Sequelize.INTEGER, allowNull: false },
+    GasLiters: { type: Sequelize.INTEGER, allowNull: false },
+    GasType: { type: Sequelize.INTEGER, allowNull: false },
 
 
 

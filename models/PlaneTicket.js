@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const PlaneTicket = sequelize.define('planeticket', {
 
-  id: 
+  PlaneTicketId: 
   {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -12,8 +12,8 @@ const PlaneTicket = sequelize.define('planeticket', {
     primaryKey: true
   },
 
-  asigned_seat: Sequelize.STRING,
-  luggage_number: Sequelize.DATE,
+  AssignedSeat: Sequelize.STRING,
+  LuggageNumber: Sequelize.DATE,
 
 
 });

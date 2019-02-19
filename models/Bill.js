@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const Bill = sequelize.define('bill', {
 
-  id: 
+  BillId: 
   {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -13,10 +13,8 @@ const Bill = sequelize.define('bill', {
 
   },
 
-  initial_price: Sequelize.FLOAT,          //Initial price of the ticket. Changes will depend on the date of purchase
-  purchase_date: Sequelize.DATE,
-  discount_type: Sequelize.STRING,
-
+  BasePrice: Sequelize.FLOAT,          //Initial price of the ticket. Changes will depend on the date of purchase
+  PurchaseDate: Sequelize.DATE,
 });
 
 module.exports = Bill;

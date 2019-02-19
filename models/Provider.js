@@ -4,15 +4,15 @@ const sequelize = require('../util/database');
 
 const Provider = sequelize.define('provider', {
     
-  id: {
+  ProviderId: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true
     },
 
-    name: Sequelize.STRING,
-    answer_time: Sequelize.DATE
+    Name: Sequelize.STRING,
+    AnswerTime: Sequelize.DATE
 });
 
 module.exports = Provider;

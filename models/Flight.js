@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const Flight = sequelize.define('flight', {
 
-  id: 
+  FlightId: 
   {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -12,7 +12,7 @@ const Flight = sequelize.define('flight', {
     primaryKey: true
   },
 
-  date: Sequelize.DATE,         //Date of the departure
+  Date: Sequelize.DATE,         //Date of the departure
 
 });
 

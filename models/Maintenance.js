@@ -4,15 +4,15 @@ const sequelize = require('../util/database');
 
 const Maintenance = sequelize.define('maintenance', {
 
-  id: 
+  MaintenanceId: 
   {
     type: Sequelize.STRING,
     allowNull: false,
     primaryKey: true
   },
 
-  name: Sequelize.STRING,
-  duration: Sequelize.TIME,
+  Name: Sequelize.STRING,
+  Duration: Sequelize.TIME,
 
 });
 

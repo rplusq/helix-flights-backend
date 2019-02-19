@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const Passenger = sequelize.define('passenger', {
 
-  id: 
+  PassengerId: 
   {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -12,11 +12,11 @@ const Passenger = sequelize.define('passenger', {
     primaryKey: true
   },
 
-  name: Sequelize.STRING,       
-  last_name: Sequelize.STRING,
-  passport: {  type: Sequelize.INTEGER, allowNull: false},
-  birth_date: { type: Sequelize.DATE, allowNull: false },
-  country: Sequelize.STRING,
+  FirstName: Sequelize.STRING,       
+  LastName: Sequelize.STRING,
+  Passport: {  type: Sequelize.INTEGER, allowNull: false},
+  BirthDate: { type: Sequelize.DATE, allowNull: false },
+  Country: Sequelize.STRING,
 
 
 });

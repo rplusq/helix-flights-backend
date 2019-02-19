@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const Manufacturer = sequelize.define('manufacturer',
   {
-    id: //Identifier
+    ManufacturerId: //Identifier
     {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -12,8 +12,8 @@ const Manufacturer = sequelize.define('manufacturer',
       primaryKey: true
     },
 
-    name: Sequelize.STRING, //Name of the manufacturer
-    country: Sequelize.STRING,
+    Name: Sequelize.STRING, //Name of the manufacturer
+    Country: Sequelize.STRING,
 
   });
 

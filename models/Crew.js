@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const Crew = sequelize.define('crew', {
 
-  id: 
+  CrewId: 
   {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -12,10 +12,10 @@ const Crew = sequelize.define('crew', {
     autoIncrement: true
   },
 
-  passport: Sequelize.INTEGER,
-  name: Sequelize.STRING,
-  last_name: Sequelize.STRING,
-  role: Sequelize.STRING,
+  Passport: Sequelize.INTEGER,
+  FirstName: Sequelize.STRING,
+  LastName: Sequelize.STRING,
+  Role: Sequelize.STRING,
 
 });
 

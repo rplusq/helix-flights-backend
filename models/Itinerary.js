@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const Itinerary = sequelize.define('itinerary', {
 
-  id: 
+  ItineraryId: 
   {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -12,7 +12,7 @@ const Itinerary = sequelize.define('itinerary', {
     primaryKey: true
   },
 
-  duration: Sequelize.TIME,
+  Duration: Sequelize.TIME,
 
 });
 
