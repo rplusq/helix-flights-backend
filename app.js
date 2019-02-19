@@ -49,7 +49,7 @@ Crew.belongsToMany(Flight, { through: 'crew-flight', foreignKey: 'crewId' });
 Flight.belongsToMany(Crew, { through: 'crew-flight', foreignKey: 'id' });
 PlaneModel.hasMany(Plane, { foreignKey: 'idmodel', sourceKey: 'id' });
 Manufacturer.hasMany(PlaneModel, { foreignKey: 'idmanufacturer', sourceKey: 'id' });
-Bill.hasMany(PlaneTicket, { foreignKey: 'idflightticket', sourceKey: 'id' });
+FlightTicket.hasMany(PlaneTicket, { foreignKey: 'idflightticket', sourceKey: 'id' });
 Passenger.hasMany(PlaneTicket, { foreignKey: 'idpassenger', sourceKey: 'id' });
 Plane.hasMany(Flight, { foreignKey: 'plane', sourceKey: 'licenseplate' });
 Itinerary.hasMany(Flight, { foreignKey: 'iditinerary', sourceKey: 'id' });
