@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
 
 //The model is used to define the object in the database
-const Airport = sequelize.define('airport', {
+const Airport = sequelize.define('Airport', {
 
   IataCode: 
   {

@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Flight = sequelize.define('flight', {
+const Flight = sequelize.define('Flight', {
 
   FlightId: 
   {

@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Provider = sequelize.define('provider', {
+const Provider = sequelize.define('Provider', {
     
   ProviderId: {
       type: Sequelize.INTEGER,

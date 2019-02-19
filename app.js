@@ -12,19 +12,19 @@ app.use(cors()); // Allows Cross Origin Request
 const logger = require('./middleware/logger');
 
 // Routes
-const clientsRoutes = require('./routes/clients');
-const airportsRoutes = require('./routes/airports');
-const crewRoutes = require('./routes/crew');
-const flightsRoutes = require('./routes/flights');
-const flightTicketsRoutes = require('./routes/flightTickets');
-const itineraryRoutes = require('./routes/itinerary');
-const maintenanceRoutes = require('./routes/maintenance');
-const manufacturersRoutes = require('./routes/manufacturers');
-const passengersRoutes = require('./routes/passengers');
-const planeModelsRoutes = require('./routes/planeModels');
-const planesRoutes = require('./routes/planes');
-const TicketsRoutes = require('./routes/Tickets');
-const providersRoutes = require('./routes/providers');
+// const clientsRoutes = require('./routes/clients');
+// const airportsRoutes = require('./routes/airports');
+// const crewRoutes = require('./routes/crew');
+// const flightsRoutes = require('./routes/flights');
+// const flightTicketsRoutes = require('./routes/flightTickets');
+// const itineraryRoutes = require('./routes/itinerary');
+// const maintenanceRoutes = require('./routes/maintenance');
+// const manufacturersRoutes = require('./routes/manufacturers');
+// const passengersRoutes = require('./routes/passengers');
+// const planeModelsRoutes = require('./routes/planeModels');
+// const planesRoutes = require('./routes/planes');
+// const TicketsRoutes = require('./routes/Tickets');
+// const providersRoutes = require('./routes/providers');
 
 // Import Models
 const Airport = require('./models/Airport');
@@ -42,6 +42,8 @@ const Ticket = require('./models/Ticket');
 const Provider = require('./models/Provider');
 const ProviderPlane = require('./models/ProviderPlane');
 const PlaneMaintenance = require('./models/PlaneMaintenance');
+const Track = require('./models/Track');
+const Variation = require('./models/Variation');
 
 //Relations
 
@@ -60,10 +62,10 @@ Bill.hasMany(Ticket, { foreignKey: 'FKBill_BillId', sourceKey: 'BillId' });
 Passenger.hasMany(Ticket, { foreignKey: 'FKPassenger_PassengerId', sourceKey: 'PassengerId' });
 Plane.hasMany(Flight, { foreignKey: 'FKPlane_LicensePlate', sourceKey: 'LicensePlate' });
 Itinerary.hasMany(Flight, { foreignKey: 'FKPlane_ItineraryId', sourceKey: 'ItineraryId' });
-Ticket.hasMany(Flight, { foreignKey: 'FKTicket_FlightId', sourceKey: 'FlightId' });
+Ticket.hasMany(Flight, { foreignKey: 'FKTicket_TicketId', sourceKey: 'TicketId' });
 Client.hasMany(Bill, { foreignKey: 'FKClient_ClientId', sourceKey: 'ClientId' });
-Airport.hasMany(Track,{ foreignKey: 'FKAirport_AirportId', sourceKey: 'AiportId' });
-Bill.hasMany(Variation,{ foreignKey: 'FKBill_BillId', sourceKey: 'BillId' });
+Airport.hasMany(Track, { foreignKey: 'FKAirport_IataCode', sourceKey: 'IataCode' });
+Bill.hasMany(Variation ,{ foreignKey: 'FKBill_BillId', sourceKey: 'BillId' });
 
 //Relations 1:1
 Airport.hasOne(Itinerary, { as:'IataDeparture', foreignKey: 'IataCode'});
@@ -78,23 +80,24 @@ app.get('/test', (req, res, next) => {
 });
 
 
-app.use('/airports', airportsRoutes);
-app.use('/clients', clientsRoutes);
-app.use('/crew', crewRoutes);
-app.use('/flights', flightsRoutes);
-app.use('/flightTickets', flightTicketsRoutes);
-app.use('/itinerary', itineraryRoutes);
-app.use('/maintenance', maintenanceRoutes);
-app.use('/manufacturers', manufacturersRoutes);
-app.use('/passengers', passengersRoutes);
-app.use('/planes', planesRoutes);
-app.use('/planeModels', planeModelsRoutes);
-app.use('/Tickets', TicketsRoutes);
-app.use('/providers', providersRoutes);
+// app.use('/airports', airportsRoutes);
+// app.use('/clients', clientsRoutes);
+// app.use('/crew', crewRoutes);
+// app.use('/flights', flightsRoutes);
+// app.use('/flightTickets', flightTicketsRoutes);
+// app.use('/itinerary', itineraryRoutes);
+// app.use('/maintenance', maintenanceRoutes);
+// app.use('/manufacturers', manufacturersRoutes);
+// app.use('/passengers', passengersRoutes);
+// app.use('/planes', planesRoutes);
+// app.use('/planeModels', planeModelsRoutes);
+// app.use('/Tickets', TicketsRoutes);
+// app.use('/providers', providersRoutes);
 
 // Models get their tables created
-sequelize. //sync({force:true})
-sync()
+sequelize. 
+sync({force:true})
+// sync()
     .then(result => {
         console.log(result);
         app.listen(5500);

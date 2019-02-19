@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Manufacturer = sequelize.define('manufacturer',
+const Manufacturer = sequelize.define('Manufacturer',
   {
     ManufacturerId: //Identifier
     {

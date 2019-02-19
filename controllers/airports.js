@@ -13,7 +13,7 @@ exports.getAll = async (req, res, next) => {
 //We can create, get, and delete airports
 
 //This method will save immediately our object to the database
-exports.postAirport = (req, res, next) => {
+exports.post = (req, res, next) => {
     const iata_code = req.body.iata_code;
     const city = req.body.city;
     const country = req.body.country;
@@ -52,7 +52,7 @@ exports.getAll = (req, res, next) => {
 }
 
 //This method will delete the airport of the database
-exports.deleteAirport = (req, res, next) => {
+exports.delete = (req, res, next) => {
     console.log(req.query, req.params);
     
     const iata_code = req.params.iata_code;
@@ -79,7 +79,7 @@ exports.getById = async (req, res, next) => {
 }
 
 // Update an airport
-exports.updateAirport = async (req, res, nex) => {
+exports.update = async (req, res, nex) => {
     try {
         const airport = await Airport.findByPk(req.body.iata_code);
         let end = await airport.update(req.body);

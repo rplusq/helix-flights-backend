@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Maintenance = sequelize.define('maintenance', {
+const Maintenance = sequelize.define('Maintenance', {
 
   MaintenanceId: 
   {

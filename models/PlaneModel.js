@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const PlaneModel = sequelize.define('planemodel',
+const PlaneModel = sequelize.define('PlaneModel',
   {
     PlaneModelId: //Identifier
     {

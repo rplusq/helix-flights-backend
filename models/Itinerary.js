@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Itinerary = sequelize.define('itinerary', {
+const Itinerary = sequelize.define('Itinerary', {
 
   ItineraryId: 
   {
