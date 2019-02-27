@@ -37,11 +37,9 @@ class ModelManager {
   }
 
   /**
-   * Iterate over Models in an order suitable for e.g. creating tables.
-   * Will take foreign key constraints into account so that dependencies are visited before dependents.
-   *
-   * @param {Function} iterator method to execute on each model
-   * @param {Object} [options] iterator options
+   * Iterate over Models in an order suitable for e.g. creating tables. Will
+   * take foreign key constraints into account so that dependencies are visited
+   * before dependents.
    * @private
    */
   forEachModel(iterator, options) {
@@ -59,7 +57,7 @@ class ModelManager {
       let tableName = model.getTableName();
 
       if (_.isObject(tableName)) {
-        tableName = `${tableName.schema}.${tableName.tableName}`;
+        tableName = tableName.schema + '.' + tableName.tableName;
       }
 
       models[tableName] = model;
@@ -72,7 +70,7 @@ class ModelManager {
             dep = attribute.references.model;
 
             if (_.isObject(dep)) {
-              dep = `${dep.schema}.${dep.tableName}`;
+              dep = dep.schema + '.' + dep.tableName;
             }
 
             deps.push(dep);

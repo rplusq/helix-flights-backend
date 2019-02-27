@@ -11,20 +11,21 @@
 /**
   A wrapper that fixes MSSQL's inability to cleanly remove columns from existing tables if they have a default constraint.
 
+  @method removeColumn
+  @for    QueryInterface
 
-  @param  {string} tableName     The name of the table.
-  @param  {string} attributeName The name of the attribute that we want to remove.
+  @param  {String} tableName     The name of the table.
+  @param  {String} attributeName The name of the attribute that we want to remove.
   @param  {Object} options
   @param  {Boolean|Function} [options.logging] A function that logs the sql queries, or false for explicitly not logging these queries
-
-  @private
+ @private
  */
 const removeColumn = function(tableName, attributeName, options) {
   options = Object.assign({ raw: true }, options || {});
 
   const findConstraintSql = this.QueryGenerator.getDefaultConstraintQuery(tableName, attributeName);
   return this.sequelize.query(findConstraintSql, options)
-    .then(([results]) => {
+    .spread(results => {
       if (!results.length) {
         // No default constraint found -- we can cleanly remove the column
         return;
@@ -36,7 +37,7 @@ const removeColumn = function(tableName, attributeName, options) {
       const findForeignKeySql = this.QueryGenerator.getForeignKeyQuery(tableName, attributeName);
       return this.sequelize.query(findForeignKeySql, options);
     })
-    .then(([results]) => {
+    .spread(results => {
       if (!results.length) {
         // No foreign key constraints found, so we can remove the column
         return;
@@ -49,7 +50,7 @@ const removeColumn = function(tableName, attributeName, options) {
       const primaryKeyConstraintSql = this.QueryGenerator.getPrimaryKeyConstraintQuery(tableName, attributeName);
       return this.sequelize.query(primaryKeyConstraintSql, options);
     })
-    .then(([result]) => {
+    .spread(result => {
       if (!result.length) {
         return;
       }
