@@ -73,7 +73,7 @@ exports.delete = (req, res, next) => {
 
 // This method will get a single airport
 exports.getById = async (req, res, next) => {
-    const id = req.query.id;
+    const id = req.query.iataCode;
     const airport = await Airport.findByPk(id);
     res.json(airport);
 }
