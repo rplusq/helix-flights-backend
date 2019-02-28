@@ -1,7 +1,7 @@
 const Passenger = require('../models/Passenger');
 
 //This method will save immediately our object to the database
-exports.postPassenger = (req, res, next) => {
+exports.post = (req, res, next) => {
     const name = req.body.name;
     const lastname = req.body.lastname;
     const passport = req.body.passport;
@@ -47,7 +47,7 @@ exports.getAll = (req, res, next) => {
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Passenger
-exports.putPassenger = (req, res, next) => {
+exports.put = (req, res, next) => {
     const id = req.body.id;
     const updname = req.body.name;
     const updlastname = req.body.lastname;
@@ -78,7 +78,7 @@ exports.putPassenger = (req, res, next) => {
 }
 
 //This method deletes the Passenger of the database
-exports.deletePassenger = (req, res, next) => {
+exports.delete = (req, res, next) => {
     const id = req.body.id;
 
     Passenger.findByPk(id)

@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/', clientsController.getAll); 
 
 //Creates a specific client in the database
-router.post('/add',clientsController.postClient);
+router.post('/add',clientsController.post);
 
 //Updates a specific client in the database
-router.put('/update',clientsController.putClient);
+router.put('/update',clientsController.put);
 
 //Deletes a specific client from the database
-router.delete('/delete/:id',clientsController.deleteClient);
+router.delete('/delete/:id',clientsController.delete);
 
 router.get('/:id', clientsController.getById)
 

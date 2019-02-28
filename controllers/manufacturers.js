@@ -1,7 +1,7 @@
 const Manufacturer = require('../models/Manufacturer');
 
 //This method will save immediately our object to the database
-exports.postManufacturer = (req, res, next) => {
+exports.post = (req, res, next) => {
     const name = req.body.name;
     const country = req.body.country;
 
@@ -40,7 +40,7 @@ exports.getAll = (req, res, next) => {
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Manufacturer
-exports.putManufacturer = (req, res, next) => {
+exports.put = (req, res, next) => {
     const id = req.body.id;
     const updname = req.body.name;
     const updcountry = req.body.country;
@@ -66,7 +66,7 @@ exports.putManufacturer = (req, res, next) => {
 }
 
 //This method deletes the Manufacturer of the database
-exports.deleteManufacturer = (req, res, next) => {
+exports.delete = (req, res, next) => {
     const id = req.body.id;
 
     Manufacturer.findByPk(id)

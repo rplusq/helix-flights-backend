@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/', planeModelsController.getAll);
 
 //Creates a specific planeModel in the database
-router.post('/add',planeModelsController.postPlaneModel);
+router.post('/add',planeModelsController.post);
 
 //Creates a specific planeModel in the database
-router.put('/update',planeModelsController.putPlaneModel);
+router.put('/update',planeModelsController.put);
 
 //Deletes a specific planeModel from the database
-router.delete('/delete/:id',planeModelsController.deletePlaneModel);
+router.delete('/delete/:id',planeModelsController.delete);
 
 router.get('/:id', planeModelsController.getById);
 

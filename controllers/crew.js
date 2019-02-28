@@ -10,7 +10,7 @@ exports.getAll = async (req, res, next) => {
 }
 
 //This method will save immediately our object to the database
-exports.postCrew = (req, res, next) => {
+exports.post = (req, res, next) => {
     const passport = Number(req.body.passport);
     const name = req.body.name;
     const last_name = req.body.last_name;
@@ -38,13 +38,13 @@ exports.postCrew = (req, res, next) => {
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Crew
-exports.putCrew = async (req, res, next) => {
+exports.put = async (req, res, next) => {
     try {
         const id = req.body.id;
 
         const person = await Crew.findByPk(id);
 
-        const result = await person.update(req.body);
+        const result = await person.put(req.body);
         console.log(result);
         console.log('Edited Crew');
         res.send(result);
@@ -56,7 +56,7 @@ exports.putCrew = async (req, res, next) => {
 
 
 //This method deletes the Crew of the database
-exports.deleteCrew = (req, res, next) => {
+exports.delete = (req, res, next) => {
     const id = req.params.id;
 
     Crew.findByPk(id)

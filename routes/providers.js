@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/', providersController.getAll);
 
 //Creates a specific provider in the database
-router.post('/add',providersController.postProviders);
+router.post('/add',providersController.post);
 
 //Updates a specific provider in the database
-router.put('/update',providersController.putProviders);
+router.put('/update',providersController.put);
 
 //Deletes a specific provider from the database
-router.delete('/delete/:id',providersController.deleteProviders);
+router.delete('/delete/:id',providersController.delete);
 
 router.get('/:id', providersController.getById);
 

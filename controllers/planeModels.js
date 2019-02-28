@@ -1,7 +1,7 @@
 const PlaneModel = require('../models/PlaneModel');
 
 //This method will save immediately our object to the database
-exports.postPlaneModel = (req, res, next) => {
+exports.post = (req, res, next) => {
     const model = req.body.model;
     const fcseats = req.body.fcseats;
     const ecoseats = req.body.ecoseats;
@@ -70,7 +70,7 @@ exports.getAll = (req, res, next) => {
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a PlaneModel
-exports.putPlaneModel = (req, res, next) => {
+exports.put = (req, res, next) => {
     const model = req.body.model;
     const updfcseats = req.body.fcseats;
     const updecoseats = req.body.ecoseats;
@@ -124,7 +124,7 @@ exports.putPlaneModel = (req, res, next) => {
 }
 
 //This method deletes the PlaneModel of the database
-exports.deletePlaneModel = (req, res, next) => {
+exports.delete = (req, res, next) => {
     const id = req.body.id;
 
     PlaneModel.findByPk(id)

@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/', maintenanceController.getAll);
 
 //Creates a specific Maintenance in the database
-router.post('/add',maintenanceController.postMaintenance);
+router.post('/add',maintenanceController.post);
 
 //Creates a specific Maintenance in the database
-router.put('/update',maintenanceController.putMaintenance);
+router.put('/update',maintenanceController.put);
 
 //Deletes a specific Maintenance from the database
-router.delete('/delete/:id',maintenanceController.deleteMaintenance);
+router.delete('/delete/:id',maintenanceController.delete);
 
 router.get('/:id', maintenanceController.getById);
 

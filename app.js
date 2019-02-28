@@ -12,19 +12,19 @@ app.use(cors()); // Allows Cross Origin Request
 const logger = require('./middleware/logger');
 
 // Routes
-// const clientsRoutes = require('./routes/clients');
-// const airportsRoutes = require('./routes/airports');
-// const crewRoutes = require('./routes/crew');
-// const flightsRoutes = require('./routes/flights');
-// const flightTicketsRoutes = require('./routes/flightTickets');
-// const itineraryRoutes = require('./routes/itinerary');
-// const maintenanceRoutes = require('./routes/maintenance');
-// const manufacturersRoutes = require('./routes/manufacturers');
-// const passengersRoutes = require('./routes/passengers');
-// const planeModelsRoutes = require('./routes/planeModels');
-// const planesRoutes = require('./routes/planes');
-// const TicketsRoutes = require('./routes/Tickets');
-// const providersRoutes = require('./routes/providers');
+const clientsRoutes = require('./routes/clients');
+const airportsRoutes = require('./routes/airports');
+const crewRoutes = require('./routes/crew');
+const flightsRoutes = require('./routes/flights');
+const flightTicketsRoutes = require('./routes/flightTickets');
+const itineraryRoutes = require('./routes/itinerary');
+const maintenanceRoutes = require('./routes/maintenance');
+const manufacturersRoutes = require('./routes/manufacturers');
+const passengersRoutes = require('./routes/passengers');
+const planeModelsRoutes = require('./routes/planeModels');
+const planesRoutes = require('./routes/planes');
+const TicketsRoutes = require('./routes/Tickets');
+const providersRoutes = require('./routes/providers');
 
 // Import Models
 const Airport = require('./models/Airport');
@@ -80,19 +80,19 @@ app.get('/test', (req, res, next) => {
 });
 
 
-// app.use('/airports', airportsRoutes);
-// app.use('/clients', clientsRoutes);
-// app.use('/crew', crewRoutes);
-// app.use('/flights', flightsRoutes);
-// app.use('/flightTickets', flightTicketsRoutes);
-// app.use('/itinerary', itineraryRoutes);
-// app.use('/maintenance', maintenanceRoutes);
-// app.use('/manufacturers', manufacturersRoutes);
-// app.use('/passengers', passengersRoutes);
-// app.use('/planes', planesRoutes);
-// app.use('/planeModels', planeModelsRoutes);
-// app.use('/Tickets', TicketsRoutes);
-// app.use('/providers', providersRoutes);
+app.use('/airports', airportsRoutes);
+app.use('/clients', clientsRoutes);
+app.use('/crew', crewRoutes);
+app.use('/flights', flightsRoutes);
+app.use('/flightTickets', flightTicketsRoutes);
+app.use('/itinerary', itineraryRoutes);
+app.use('/maintenance', maintenanceRoutes);
+app.use('/manufacturers', manufacturersRoutes);
+app.use('/passengers', passengersRoutes);
+app.use('/planes', planesRoutes);
+app.use('/planeModels', planeModelsRoutes);
+app.use('/Tickets', TicketsRoutes);
+app.use('/providers', providersRoutes);
 
 // Models get their tables created
 sequelize. 

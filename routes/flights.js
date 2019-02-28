@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/', flightsController.getAll);
 
 //Creates a specific flight in the database
-router.post('/add',flightsController.postFlight);
+router.post('/add',flightsController.post);
 
 //Updates a specific flight in the database
-router.put('/update',flightsController.putFlight);
+router.put('/update',flightsController.put);
 
 //Deletes a specific flight from the database
-router.delete('/delete/:id',flightsController.deleteFlight);
+router.delete('/delete/:id',flightsController.delete);
 
 router.get('/:id', flightsController.getById);
 

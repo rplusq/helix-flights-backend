@@ -1,7 +1,7 @@
 const Maintenance = require('../models/Maintenance');
 
 //This method will save immediately our object to the database
-exports.postMaintenance = (req, res, next) => {
+exports.post = (req, res, next) => {
     const name = req.body.name;
     const duration = req.body.duration;
 
@@ -41,7 +41,7 @@ exports.getAll = (req, res, next) => {
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Maintenance
-exports.putMaintenance = (req, res, next) => {
+exports.put = (req, res, next) => {
     const id = req.body.id;
     const updname = req.body.name;
     const updduration = req.body.duration;
@@ -67,7 +67,7 @@ exports.putMaintenance = (req, res, next) => {
 }
 
 //This method deletes the Maintenance of the database
-exports.deleteMaintenance = (req, res, next) => {
+exports.delete = (req, res, next) => {
     const id = req.body.id;
 
     Maintenance.findByPk(id)

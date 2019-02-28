@@ -79,7 +79,7 @@ exports.getById = async (req, res, next) => {
 }
 
 // Update an airport
-exports.update = async (req, res, nex) => {
+exports.put = async (req, res, nex) => {
     try {
         const airport = await Airport.findByPk(req.body.iata_code);
         let end = await airport.update(req.body);

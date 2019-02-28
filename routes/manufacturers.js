@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/', manufacturersController.getAll);
 
 //Creates a specific manufacturer in the database
-router.post('/add',manufacturersController.postManufacturer);
+router.post('/add',manufacturersController.post);
 
 //Creates a specific manufacturer in the database
-router.put('/update',manufacturersController.putManufacturer);
+router.put('/update',manufacturersController.put);
 
 //Deletes a specific manufacturer from the database
-router.delete('/delete/:id',manufacturersController.deleteManufacturer);
+router.delete('/delete/:id',manufacturersController.delete);
 
 router.get('/:id', manufacturersController.getById);
 

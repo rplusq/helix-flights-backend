@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/', itineraryController.getAll);
 
 //Creates a specific itinerary in the database
-router.post('/add',itineraryController.postItinerary);
+router.post('/add',itineraryController.post);
 
 //Creates a specific itinerary in the database
-router.put('/update',itineraryController.putItinerary);
+router.put('/update',itineraryController.put);
 
 //Deletes a specific itinerary from the database
-router.delete('/delete/:id',itineraryController.deleteItinerary);
+router.delete('/delete/:id',itineraryController.delete);
 
 router.get('/:id', itineraryController.getById);
 

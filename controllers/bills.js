@@ -1,13 +1,13 @@
-const Bill = require('../models/FlightTicket');
+const Bill = require('../models/Bill');
 
 //This method will save immediately our object to the database
-exports.postFlightTicket = (req, res, next) => {
+exports.post = (req, res, next) => {
 
     const initalprice = req.body.initalprice;
     const purchasedate = req.body.purchasedate;
     const discounttype = req.body.discounttype;
 
-    FlightTicket.create({ //Method provided by sequelize 
+    Bill.create({ //Method provided by sequelize 
 
         initalprice: initalprice,
         purchasedate: purchasedate,
@@ -16,7 +16,7 @@ exports.postFlightTicket = (req, res, next) => {
     }).then(result => {
 
         console.log(result);
-        console.log('FlightTicket Created');
+        console.log('Bill Created');
 
     }).catch(err => {
 
@@ -27,9 +27,9 @@ exports.postFlightTicket = (req, res, next) => {
 
 }
 
-//This method gets all the FlightTicket from the database
+//This method gets all the Bill from the database
 exports.getAll = (req, res, next) => {
-    FlightTicket.findAll().then(
+    Bill.findAll().then(
 
         //Here we have to code where do we want the results to render
 
@@ -37,31 +37,31 @@ exports.getAll = (req, res, next) => {
 
         console.log(err);
     });
-    res.status(200).json(FlightTicket);
+    res.status(200).json(Bill);
 
 }
 
 //To find specific data with the where condition, tutorial 152
 
-//This method edits  and updates the attributes of a FlightTicket
-exports.putFlightTicket = (req, res, next) => {
+//This method edits  and updates the attributes of a Bill
+exports.put = (req, res, next) => {
     const id = req.body.id;
     const updinitialprice = req.body.initalprice;
     const updpurchasedate = req.body.purchasedate;
     const upddiscounttype = req.body.discounttype;
 
-    FlightTicket.findByPk(id).then(FlightTicket => {
-        FlightTicket.initalprice = updinitialprice;
-        FlightTicket.purchasedate = updpurchasedate;
-        FlightTicket.discounttype = upddiscounttype;
+    Bill.findByPk(id).then(Bill => {
+        Bill.initalprice = updinitialprice;
+        Bill.purchasedate = updpurchasedate;
+        Bill.discounttype = upddiscounttype;
 
-        return FlightTicket.save();
+        return Bill.save();
     }
 
     ).then(result => {
 
         console.log(result);
-        console.log('Edited FlightTicket')
+        console.log('Edited Bill')
 
     }).catch(err => {
 
@@ -70,16 +70,16 @@ exports.putFlightTicket = (req, res, next) => {
     res.sendStatus(200);
 }
 
-//This method deletes the FlightTicket of the database
-exports.deleteFlightTicket = (req, res, next) => {
+//This method deletes the Bill of the database
+exports.delete = (req, res, next) => {
     const id = req.body.id;
 
-    FlightTicket.findByPk(id)
-        .then(FlightTicket => {
-            return FlightTicket.destroy();
+    Bill.findByPk(id)
+        .then(Bill => {
+            return Bill.destroy();
         })
         .then(result => {
-            console.log('FlightTicket deleted successfully');
+            console.log('Bill deleted successfully');
         })
         .catch(err => console.log(err));
         res.sendStatus(200);
@@ -88,7 +88,7 @@ exports.deleteFlightTicket = (req, res, next) => {
 
 exports.getById = async (req, res, next) => {
     const id = req.query.id;
-    const FlightTicket = await FlightTicket.findByPk(id);
-    res.status(200).json(FlightTicket);
+    const Bill = await Bill.findByPk(id);
+    res.status(200).json(Bill);
 }
 

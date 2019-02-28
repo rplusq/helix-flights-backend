@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/', planesController.getAll);
 
 //Creates a specific plane in the database
-router.post('/add',planesController.postPlane);
+router.post('/add',planesController.post);
 
 //Creates a specific plane in the database
-router.put('/update',planesController.putPlane);
+router.put('/update',planesController.put);
 
 //Deletes a specific plane from the database
-router.delete('/delete/:id',planesController.deletePlane);
+router.delete('/delete/:id',planesController.delete);
 
 router.get('/:id', planesController.getById);
 

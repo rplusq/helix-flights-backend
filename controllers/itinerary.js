@@ -1,7 +1,7 @@
 const Itinerary = require('../models/Itinerary');
 
 //This method will save immediately our object to the database
-exports.postItinerary = (req, res, next) => {
+exports.post = (req, res, next) => {
 
     const duration = req.body.duration;
 
@@ -39,7 +39,7 @@ exports.getAll = (req, res, next) => {
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Itinerary
-exports.putItinerary = (req, res, next) => {
+exports.put = (req, res, next) => {
     const id = req.body.id;
     const updduration = req.body.duration;
 
@@ -63,7 +63,7 @@ exports.putItinerary = (req, res, next) => {
 }
 
 //This method deletes the Itinerary of the database
-exports.deleteItinerary = (req, res, next) => {
+exports.delete = (req, res, next) => {
     const id = req.body.id;
 
     Itinerary.findByPk(id)

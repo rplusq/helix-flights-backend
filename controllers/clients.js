@@ -1,7 +1,7 @@
 const Client = require('../models/Client'); //We import our model
 
 //This method will save immediately our object to the database
-exports.postClient = (req, res, next) => {
+exports.post = (req, res, next) => {
     const name = req.body.name;
     const lastname = req.body.lastname;
     const email = req.body.email;
@@ -41,7 +41,7 @@ exports.getAll = (req, res, next) => {
 //To find specific data with the where condition, tutorial 152
 
 //This method edits  and updates the attributes of a Client
-exports.putClient = (req, res, next) => {
+exports.put = (req, res, next) => {
     const id = req.body.id;
     const updname = req.body.name;
     const updlastname = req.body.lastname;
@@ -68,7 +68,7 @@ exports.putClient = (req, res, next) => {
 }
 
 //This method deletes the Client of the database
-exports.deleteClient = (req, res, next) => {
+exports.delete = (req, res, next) => {
     const id = req.body.id;
 
     Client.findByPk(id)

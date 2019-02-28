@@ -8,14 +8,14 @@ const router = express.Router();
 router.get('/', airportsController.getAll);
 
 //Creates a specific airport in the database
-router.post('/add',airportsController.postAirport);
+router.post('/add',airportsController.post);
 
 //Deletes a specific airport from the database
-router.delete('/delete/:iatacode',airportsController.deleteAirport);
+router.delete('/delete/:iatacode',airportsController.delete);
 
 //Updates a specific airport from the database
 
-router.put('/update', airportsController.updateAirport);
+router.put('/update', airportsController.put);
 
 router.get('/:id', airportsController.getById);
 
