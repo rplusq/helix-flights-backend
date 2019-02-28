@@ -16,14 +16,14 @@ const clientsRoutes = require('./routes/clients');
 const airportsRoutes = require('./routes/airports');
 const crewRoutes = require('./routes/crew');
 const flightsRoutes = require('./routes/flights');
-const flightTicketsRoutes = require('./routes/flightTickets');
+const billsRoutes = require('./routes/bills');
 const itineraryRoutes = require('./routes/itinerary');
 const maintenanceRoutes = require('./routes/maintenance');
 const manufacturersRoutes = require('./routes/manufacturers');
 const passengersRoutes = require('./routes/passengers');
 const planeModelsRoutes = require('./routes/planeModels');
 const planesRoutes = require('./routes/planes');
-const TicketsRoutes = require('./routes/Tickets');
+const ticketsRoutes = require('./routes/tickets');
 const providersRoutes = require('./routes/providers');
 
 // Import Models
@@ -84,14 +84,14 @@ app.use('/airports', airportsRoutes);
 app.use('/clients', clientsRoutes);
 app.use('/crew', crewRoutes);
 app.use('/flights', flightsRoutes);
-app.use('/flightTickets', flightTicketsRoutes);
+app.use('/bills', billsRoutes);
 app.use('/itinerary', itineraryRoutes);
 app.use('/maintenance', maintenanceRoutes);
 app.use('/manufacturers', manufacturersRoutes);
 app.use('/passengers', passengersRoutes);
 app.use('/planes', planesRoutes);
 app.use('/planeModels', planeModelsRoutes);
-app.use('/Tickets', TicketsRoutes);
+app.use('/tickets', ticketsRoutes);
 app.use('/providers', providersRoutes);
 
 // Models get their tables created
