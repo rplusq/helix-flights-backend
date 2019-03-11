@@ -3,7 +3,9 @@ const bodyParser = require('body-parser');
 const sequelize = require('./util/database'); //Database instance 
 const cors = require('cors');
 const app = express();
+
 // app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 
 app.use(cors()); // Allows Cross Origin Request
@@ -49,7 +51,7 @@ const Variation = require('./models/Variation');
 
 //Relations N:M
 Plane.belongsToMany(Provider, { through: ProviderPlane, foreignKey: 'LicensePlate' });
-Provider.belongsToMany(Plane, { through: ProviderPlane , foreignKey: 'ProviderId' });
+Provider.belongsToMany(Plane, { through: ProviderPlane, foreignKey: 'ProviderId' });
 Crew.belongsToMany(Flight, { through: 'CrewFlight', foreignKey: 'CrewId' });
 Flight.belongsToMany(Crew, { through: 'CrewFlight', foreignKey: 'FlightId' });
 Plane.belongsToMany(Maintenance, { through: PlaneMaintenance, foreignKey: 'PlaneId' });
@@ -61,15 +63,15 @@ Manufacturer.hasMany(PlaneModel, { foreignKey: 'FKManufacturer_ManufacturerId', 
 Bill.hasMany(Ticket, { foreignKey: 'FKBill_BillId', sourceKey: 'BillId' });
 Passenger.hasMany(Ticket, { foreignKey: 'FKPassenger_PassengerId', sourceKey: 'PassengerId' });
 Plane.hasMany(Flight, { foreignKey: 'FKPlane_LicensePlate', sourceKey: 'LicensePlate' });
-Itinerary.hasMany(Flight, { foreignKey: 'FKPlane_ItineraryId', sourceKey: 'ItineraryId' });
-Ticket.hasMany(Flight, { foreignKey: 'FKTicket_TicketId', sourceKey: 'TicketId' });
-Client.hasMany(Bill, { foreignKey: 'FKClient_ClientId', sourceKey: 'ClientId' });
+Itinerary.hasMany(Flight, { foreignKey: 'FKItinerary_ItineraryId', sourceKey: 'ItineraryId' });
+Flight.hasMany(Ticket, { foreignKey: 'FKFlight_FlightId', sourceKey: 'FlightId' });
+Client.hasMany(Bill, { foreignKey: 'FKClient_Email', sourceKey: 'Email' });
 Airport.hasMany(Track, { foreignKey: 'FKAirport_IataCode', sourceKey: 'IataCode' });
-Bill.hasMany(Variation ,{ foreignKey: 'FKBill_BillId', sourceKey: 'BillId' });
+Variation.hasMany(Flight, { foreignKey: 'FKVariation_VariationId', sourceKey: 'VariationId' });
 
 //Relations 1:1
-Airport.hasOne(Itinerary, { as:'IataDeparture', foreignKey: 'IataCode'});
-Airport.hasOne(Itinerary, { as:'IataArrival', foreignKey: 'IataCode'});
+Airport.hasOne(Itinerary, { as: 'IataDeparture', foreignKey: 'IataCode' });
+Airport.hasOne(Itinerary, { as: 'IataArrival', foreignKey: 'IataCode' });
 
 // Request's logger
 app.use(logger);  //Manages every request
@@ -93,11 +95,13 @@ app.use('/planes', planesRoutes);
 app.use('/planeModels', planeModelsRoutes);
 app.use('/tickets', ticketsRoutes);
 app.use('/providers', providersRoutes);
+// app.use('/prices', pricesRoutes);
+//TODO : Prices model, routes and controller
 
 // Models get their tables created
-sequelize. 
-sync({force:true})
-// sync()
+sequelize.
+    sync({ force: true })
+    // sync()
     .then(result => {
         console.log(result);
         app.listen(5500);

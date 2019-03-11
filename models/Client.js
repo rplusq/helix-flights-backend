@@ -4,18 +4,15 @@ const sequelize = require('../util/database');
 
 const Client = sequelize.define('Client', {
 
-  ClientId: 
+  Email:
   {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
+    type: Sequelize.STRING,
     allowNull: false,
     primaryKey: true
   },
 
   FirstName: Sequelize.STRING,
-  LastName: Sequelize.STRING,
-  Email: Sequelize.STRING,
-
+  LastName: Sequelize.STRING
 });
 
 module.exports = Client;

@@ -10,7 +10,6 @@ const PlaneModel = sequelize.define('PlaneModel',
       allowNull: false,
       autoIncrement: true,
       primaryKey: true
-
     },
 
     Model: Sequelize.STRING, //name of the model's plane

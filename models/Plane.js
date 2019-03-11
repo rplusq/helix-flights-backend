@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const Plane = sequelize.define('Plane', {
 
-  LicensePlate: 
+  LicensePlate:
   {
     type: Sequelize.STRING,
     allowNull: false,
@@ -12,9 +12,7 @@ const Plane = sequelize.define('Plane', {
   },
 
   MedicalSupplies: { type: Sequelize.INTEGER, allowNull: false },
-  crew_number: { type: Sequelize.INTEGER, allowNull: false },
-  status: Sequelize.STRING,
-  
+  CrewNumber: { type: Sequelize.INTEGER, allowNull: false }
 });
 
 module.exports = Plane;

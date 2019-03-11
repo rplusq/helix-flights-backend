@@ -4,7 +4,7 @@ const sequelize = require('../util/database');
 
 const Itinerary = sequelize.define('Itinerary', {
 
-  ItineraryId: 
+  ItineraryId:
   {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -13,7 +13,8 @@ const Itinerary = sequelize.define('Itinerary', {
   },
 
   Duration: Sequelize.TIME,
-
+  EconomyPrice: Sequelize.INTEGER,
+  FirstClassPrice: Sequelize.INTEGER
 });
 
 module.exports = Itinerary;
