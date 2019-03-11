@@ -46,6 +46,7 @@ const ProviderPlane = require('./models/ProviderPlane');
 const PlaneMaintenance = require('./models/PlaneMaintenance');
 const Track = require('./models/Track');
 const Variation = require('./models/Variation');
+const DetourFlight = require('./models/DetourFlight');
 
 //Relations
 
@@ -72,6 +73,8 @@ Variation.hasMany(Flight, { foreignKey: 'FKVariation_VariationId', sourceKey: 'V
 //Relations 1:1
 Airport.hasOne(Itinerary, { as: 'IataDeparture', foreignKey: 'IataCode' });
 Airport.hasOne(Itinerary, { as: 'IataArrival', foreignKey: 'IataCode' });
+DetourFlight.hasOne(Flight, { as: 'FKFlight_FlightId', foreignKey: 'FlightId' });
+DetourFlight.hasOne(Airport, { as: 'NewIataDestiny', foreignKey: 'IataCode' });
 
 // Request's logger
 app.use(logger);  //Manages every request
